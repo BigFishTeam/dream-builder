@@ -1,0 +1,25 @@
+@import '../../common/style/mixin.scss';
+
+body {
+  @include b(header) {
+    @include e(wrapper) {
+      background: #2c2c2c;
+      color: white;
+      padding-left: 10px;
+      padding-right: 10px;
+      box-sizing: border-box;
+
+      @include size(100%, 33px);
+      line-height: 33px;
+      font-size: 10px;
+    }
+
+    @include e(left) {
+      a {
+        color: white;
+        padding-left: 8px;
+        padding-right: 8px;
+      }
+    }
+  }
+}

@@ -1,0 +1,13 @@
+@import '../../common/style/mixin.scss';
+
+body {
+  @include b(leftBar) {
+    @include e(wrapper) {
+      @include size(193px, 100%);
+      overflow: scroll;
+      max-height: 100%;
+      z-index: 1;
+      background: #f3f3f3;
+    }
+  }
+}

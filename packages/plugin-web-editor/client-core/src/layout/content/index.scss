@@ -1,0 +1,10 @@
+@import '../../common/style/mixin.scss';
+
+body {
+  @include b(content) {
+    @include e(wrapper) {
+      flex: 1;
+      height: 100%;
+    }
+  }
+}

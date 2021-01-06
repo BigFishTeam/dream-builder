@@ -1,0 +1,31 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "modules": true
+    }
+  },
+  "extends": ["prettier", "prettier/react"],
+  "plugins": ["@typescript-eslint", "prettier", "import"],
+  "env": {
+    "es6": true
+  },
+  "rules": {
+    "prettier/prettier": "error",
+    "no-dupe-args": "error",
+    "no-dupe-keys": "error",
+    "no-unreachable": "warn",
+    "curly": ["warn", "multi"],
+    "eqeqeq": ["warn", "always"],
+    "no-unused-labels": "error",
+    "no-multi-str": "error",
+    "no-empty-pattern": "error",
+    "no-const-assign": "error",
+    "prefer-const": "error",
+    "no-var": ["error", "always"],
+    "block-spacing": ["error", "always"],
+    "comma-spacing": ["error", { "before": false, "after": true }]
+  }
+}

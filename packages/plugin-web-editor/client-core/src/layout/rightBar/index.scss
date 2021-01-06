@@ -1,0 +1,12 @@
+@import '../../common/style/mixin.scss';
+
+body {
+  @include b(rightBar) {
+    @include e(wrapper) {
+      @include size(240px, 100%);
+      background: #f3f3f3;
+      max-height: 100%;
+      overflow: scroll;
+    }
+  }
+}

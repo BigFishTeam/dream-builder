@@ -1,0 +1,15 @@
+@import '../common/style/mixin.scss';
+
+body {
+  @include b(render) {
+    @include e(hoc) {
+      &:hover {
+        border: 1px dotted red;
+      }
+
+      @include m(active) {
+        border: 1px dotted rgb(83, 127, 248);
+      }
+    }
+  }
+}

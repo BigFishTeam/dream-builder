@@ -1,0 +1,45 @@
+{
+  "name": "dream-builder-core",
+  "version": "0.1.0",
+  "description": "",
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix --ext .js",
+      "prettier --write",
+      "git add"
+    ],
+    "*.ts": [
+      "eslint --fix --ext .ts",
+      "prettier --write",
+      "git add"
+    ],
+    "*.tsx": [
+      "eslint --fix --ext .tsx",
+      "prettier --write",
+      "git add"
+    ],
+    "*.{html,vue,css,sass,scss,less}": [
+      "stylelint --fix",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "devDependencies": {
+    "lerna": "^3.22.0"
+  },
+  "scripts": {
+    "commit": "git-cz",
+    "release": "standard-version"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BigFishTeam/dream-builder.git"
+  },
+  "author": "@BigFishTeam",
+  "license": "MIT"
+}

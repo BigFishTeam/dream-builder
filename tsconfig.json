@@ -1,0 +1,17 @@
+{
+  "files": [],
+  "references": [
+    {
+      "path": "packages/create-dream"
+    },
+    {
+      "path": "packages/plugin-config"
+    },
+    {
+      "path": "packages/plugin-react-template"
+    },
+    {
+      "path": "packages/plugin-web-editor"
+    },
+  ]
+}

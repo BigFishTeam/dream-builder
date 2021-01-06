@@ -1,0 +1,12 @@
+@import '../../common/style/mixin.scss';
+
+body {
+    @include b(footer) {
+        @include e(wrapper) {
+            background: #2C2C2C;
+            color: rgba(255, 255, 255, .8);
+            height: 22px;
+            line-height: 22px;
+        }
+    }
+}

@@ -1,0 +1,44 @@
+@import '../../common/style/mixin.scss';
+
+@include b(materialConfiger) {
+  @include e(title) {
+    display: flex;
+    height: 32px;
+    background: white;
+    align-items: center;
+    padding-left: 10px;
+  }
+
+  @include e(panel) {
+  }
+
+  @include e(panel-title) {
+    display: flex;
+    padding: 8px 10px;
+  }
+
+  @include e(panel-item) {
+    display: flex;
+    padding: 10px 8px;
+  }
+
+  @include e(panel-item-title) {
+    display: flex;
+    align-items: center;
+    padding: 4px 8px;
+  }
+
+  @include e(panel-item-value) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include m(state) {
+    }
+
+    @include m(normal) {
+    }
+
+    @include m(method) {
+    }
+  }
+}

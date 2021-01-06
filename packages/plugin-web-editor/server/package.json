@@ -1,0 +1,31 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "tsc && node dist/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/bluebird": "^3.5.32",
+    "@types/node": "^14.0.23",
+    "@types/sequelize": "^4.28.1",
+    "@types/validator": "^10.11.3",
+    "koa": "^2.12.1",
+    "koa-cors": "^0.0.16",
+    "koa-router": "^9.0.1",
+    "koa-session": "^5.5.0",
+    "mysql2": "^1.4.2",
+    "reflect-metadata": "^0.1.10",
+    "sequelize": "^5.15.1",
+    "sequelize-typescript": "^1.0.0-alpha.9"
+  },
+  "devDependencies": {
+    "@types/koa": "^2.11.3",
+    "@types/koa-router": "^7.4.1",
+    "supervisor": "^0.12.0"
+  }
+}

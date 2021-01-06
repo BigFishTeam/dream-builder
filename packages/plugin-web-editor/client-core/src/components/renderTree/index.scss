@@ -1,0 +1,59 @@
+@import '../../common/style/mixin.scss';
+
+@include b(renderTree) {
+  overflow-x: scroll;
+  @include e(title) {
+    display: flex;
+    align-items: center;
+    height: 32px;
+    background: white;
+    padding-left: 10px;
+  }
+
+  @include e(layout-container) {
+    svg {
+      margin-right: 4px;
+    }
+    padding-left: 4px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 23px;
+
+    &:hover {
+      background-color: rgba(20, 160, 253, 0.2);
+    }
+
+    @include m(active) {
+      background-color: rgba(20, 160, 253, 0.3);
+    }
+    color: #2196f3;
+  }
+
+  @include e(layout-delete) {
+    display: flex;
+    flex: 1;
+    flex-direction: row-reverse;
+    padding-right: 5px;
+    cursor: pointer;
+  }
+
+  @include e(children-container) {
+  }
+
+  @include e(fc-container) {
+    padding-left: 4px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 23px;
+
+    @include m(active) {
+      background-color: rgba(20, 160, 253, 0.3);
+    }
+
+    &:hover {
+      background-color: rgba(20, 160, 253, 0.2);
+    }
+  }
+}

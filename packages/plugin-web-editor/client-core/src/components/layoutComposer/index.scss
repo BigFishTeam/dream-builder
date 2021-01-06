@@ -1,0 +1,13 @@
+@import '../../common/style/mixin.scss';
+
+@include b(layoutComposer) {
+  @include e(wrapper) {
+    display: flex;
+    flex-direction: column;
+  }
+
+  @include e(composer) {
+    display: flex;
+    flex-direction: row;
+  }
+}

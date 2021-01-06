@@ -1,0 +1,53 @@
+@import '../../common/style/mixin.scss';
+
+@include b(content) {
+  @include e(pageView) {
+    height: 32px;
+    width: 100%;
+    background: #f3f3f3;
+    box-shadow: 1px 1px 1px rgba(119, 119, 119, 0.2);
+    display: flex;
+  }
+
+  @include e(pageView-title) {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 3px 0 3px;
+  }
+
+  @include e(pageView-addPage) {
+    height: 100%;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background: white;
+    margin-left: 10px;
+  }
+
+  @include e(pageView-pageItem) {
+    height: 100%;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    cursor: pointer;
+    margin-left: 10px;
+    border-top: 2px solid rgb(121, 206, 255);
+    padding-left: 5px;
+    padding-right: 5px;
+    background: transparent;
+
+    @include m(active) {
+      background: white;
+    }
+  }
+
+  @include e(pageView-pageItemWrapper) {
+    display: flex;
+  }
+}
