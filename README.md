@@ -25,11 +25,11 @@ npm start
 - config：全局配置文件
 - docs：项目文档
 - packages：项目执行引擎与核心插件
-  - create-dream
-  - plugin-config
-  - plugin-react-template
-  - plugin-router
-  - plugin-web-editor
+  - create-dream：项目初始化与插件加载机制
+  - plugin-config：配置插件
+  - plugin-react-template：react组件模版，目前支持：antd、sui组件库
+  - plugin-router：路由插件
+  - plugin-web-editor：web编辑器插件
     - client-core: Web Editor Core，编辑器核心代码
     - client-view: 编辑器视图层，包括：团队、项目、页面管理等
     - server：node后端服务，数据持久化
