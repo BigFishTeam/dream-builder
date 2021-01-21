@@ -1,0 +1,71 @@
+---
+name: RouterPage 路由页面
+menu: 导航
+---
+
+import BrowserRouterPage from '../../core/components/browserRouterPage';
+import CodeBox from '../plugin/codeBox';
+
+## RouterPage 路由页面
+
+```js
+import { BrowserRouterPage } from 'sui-components';
+import pageRoutes from 'routerPage.config.js';
+```
+### 何时使用
+
+- 需要根据路由配置渲染页面时
+- 默认根据路由配置文件routerPage.config.js渲染全部页面，同时支持业务方自行渲染动态子页面
+
+### 使用方法
+
+<CodeBox
+  title="路由页面"
+  demo={[
+    {
+      title: '根路由渲染全部页面',
+      component: <BrowserRouterPage />,
+      code: `import { BrowserRouterPage } from 'sui-components';
+import pageRoutes from 'routerPage.config.js';
+ReactDOM.render(<BrowserRouterPage routeData={pageRoutes}/>, document.getElementById('app'))`
+    },
+    {
+      title: '动态渲染子页面',
+      component: <BrowserRouterPage />,
+      code: `import { BrowserRouterPage } from 'sui-components';
+export default class FatherComp extends Component {
+  render() {
+    return (
+      <div className="article-wrapper">
+        <div>父组件页面内容</div>
+        /* 使用RouterPage组件渲染子路由页面, isRoot传false */
+        <BrowserRouterPage routeData={this.props.routerConfig} isRoot={false} /> 
+      </div>
+    );
+  }
+}`
+    }
+  ]}
+  api={[
+    {
+      title: '',
+      data: [
+        {
+          key: '1',
+          params: 'routeData',
+          des:
+            '页面配置数据 根路由页面传整个对象,非根路由页面传data数组 参考/src/routerPage.config.js',
+          type: 'array | object	',
+          default: "{ defaultSelectedKey: '', data: [] }"
+        },
+        {
+          key: '2',
+          params: 'isRoot',
+          des: '是否为根路由页面 非根路由页面传false',
+          type: 'bool',
+          default: 'false'
+        }
+      ]
+    }
+  ]}
+/>

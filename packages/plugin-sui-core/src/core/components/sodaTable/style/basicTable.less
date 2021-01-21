@@ -1,0 +1,30 @@
+/**
+ * @file basicTable.less
+ * @date 2019-02-26 11.24.28
+ */
+
+@import '../../../themes/variables.less';
+
+/*table样式*/
+.sui-table {
+  width: 100%;
+  margin-bottom: 20px;
+  .sui-table-header {
+    font-size: 16px;
+    height: 55px;
+    .sui-table-title {
+      margin-top: 8px;
+      float: right;
+      &:empty {
+        display: none;
+      }
+    }
+    .sui-table-action {
+      display: inline-block;
+      margin-top: 4px;
+      button.second {
+        margin-left: 10px;
+      }
+    }
+  }
+}

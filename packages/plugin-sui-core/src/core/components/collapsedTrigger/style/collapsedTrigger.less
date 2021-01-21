@@ -1,0 +1,18 @@
+@import './../../../themes/variables.less';
+
+@trigger: ~'@{sui-prefix}-collapsed-trigger';
+
+.@{trigger} {
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  width: 70px;
+  color: #999;
+
+  &:hover {
+    .anticon {
+      color: @primary-color;
+    }
+  }
+}

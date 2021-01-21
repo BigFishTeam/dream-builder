@@ -1,0 +1,43 @@
+---
+name: HttpError Http错误
+menu: 通用
+---
+
+import HttpError from '../../core/components/httpError';
+import CodeBox from '../plugin/codeBox';
+
+## HttpError 错误页
+
+```js
+import { HttpError } from 'sui-components';
+```
+### 何时使用
+
+- 当页面请求出错时，根据http返回码渲染错误页面
+
+### 使用方法
+
+<CodeBox
+  title="http错误"
+  demo={[
+    {
+      component: <HttpError errorCode="500" />,
+      code: `import { HttpError } from 'sui-components';
+ReactDOM.render(<HttpError errorCode="500"/>, document.getElementById('app'));`
+    }
+  ]}
+  api={[
+    {
+      title: '',
+      data: [
+        {
+          key: '1',
+          params: 'errorCode',
+          des: '页面错误状态码; 参数：403/404/500等',
+          type: 'string',
+          default: '-'
+        }
+      ]
+    }
+  ]}
+/>

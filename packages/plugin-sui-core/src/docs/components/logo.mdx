@@ -1,0 +1,65 @@
+---
+name: Logo 网站logo
+menu: 数据展示
+---
+
+import Logo from '../../core/components/logo';
+import logoImg from 'sui-icons/lib/geekLogo';
+import logoText from 'sui-icons/lib/geekText';
+import CodeBox from '../plugin/codeBox';
+
+## Logo 网站logo
+
+```js
+import { Logo } from 'sui-components';
+```
+### 何时使用
+
+- 使用[sui-icons](https://git.code.oa.com/comment_frontend/sui-icons)图标库为网站添加logo时
+- 需要自定义logo时, 欢迎给[sui-icons](https://git.code.oa.com/comment_frontend/sui-icons)提PR
+
+### 使用方法
+
+<CodeBox
+  title="logo"
+  demo={[{
+      component: <Logo img={logoImg} text={'极客审核平台'} url={'/'} />,
+      code: `import { Logo } from 'sui-components';
+import logoImg from 'sui-icons/lib/geekLogo';
+import logoText from 'sui-icons/lib/geekText';
+ReactDom.render(<Logo img={logoImg} text={logoText} url={'/'} />, document.getElementById('app'));`
+  }]}
+  api={[{
+      title: '',
+      data: [
+    {
+      key: '1',
+      params: 'collapsed',
+      des: '是否收缩',
+      type: 'bool',
+      default: "false"
+    },
+    {
+      key: '2',
+      params: 'url',
+      des:'点击logo跳转链接',
+      type: 'string',
+      default: "''"
+    },
+    {
+      key: '3',
+      params: 'img',
+      des:'logo图标；参数：svg转化的react无状态组件',
+      type: 'function',
+      default: "-"
+    },
+    {
+      key: '4',
+      params: 'text',
+      des:'logo文案；参数：文本/svg的react无状态组件',
+      type: 'function | string',
+      default: "-"
+    }
+  ]
+  }]}
+/>

@@ -1,0 +1,61 @@
+---
+name: NavigationPrompt 页面跳转提示
+menu: 导航
+---
+
+import NavigationPrompt from '../../core/components/navigationPrompt';
+import CodeBox from '../plugin/codeBox';
+import { Modal } from 'antd';
+
+## NavigationPrompt 页面跳转提示
+
+``` js
+import { NavigationPrompt } from 'sui-components';
+```
+### 何时使用
+
+- 离开当前本页时，该页面有未保存的操作时，进行提醒
+- 需要时，将该组件嵌入到当前页面的任何位置即可
+
+### 使用方法
+
+<CodeBox
+  title="页面跳转提示"
+  demo={[{
+      component: <NavigationPrompt when>
+            {(isOpen, onConfirm, onCancel) => (
+              <Modal visible={isOpen} onOk={onConfirm} onCancel={onCancel} okText="确认" cancelText="取消">
+                <p>该页面有未保存操作，是否现在离开？</p>
+              </Modal>
+            )}
+      </NavigationPrompt>,
+      code: `import { NavigationPrompt } from 'sui-components';
+import { Modal } from 'antd';
+<NavigationPrompt when>
+  {(isOpen, onConfirm, onCancel) => (
+    <Modal visible={isOpen} onOk={onConfirm} onCancel={onCancel} okText="确认" cancelText="取消">
+      <p>该页面有未保存操作，是否现在离开？</p>
+    </Modal>
+  )}
+</NavigationPrompt>`
+  }]}
+  api={[{
+      title: '',
+      data: [
+    {
+      key: '1',
+      params: 'when',
+      des: '何时触发提示',
+      type: 'boolean',
+      default: 'true'
+    },
+    {
+      key: '2',
+      params: 'children',
+      des:'子节点',
+      type: 'func',
+      default: "(isOpen, onConfirm, onCancel) => ()"
+    }
+  ]
+  }]}
+/>

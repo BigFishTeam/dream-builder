@@ -1,0 +1,112 @@
+---
+name: VideoPlayer 播放器
+menu: 数据展示
+---
+
+import VideoPlayer from '../../core/components/videoPlayer';
+import CodeBox from '../plugin/codeBox';
+
+## VideoPlayer 播放器
+
+```js
+import { VideoPlayer } from 'sui-components';
+```
+
+### 何时使用
+
+- 网页需要内嵌播放器时
+
+### 使用方法
+<CodeBox
+  title="播放器"
+  demo={[
+    {
+      component: (
+        <div
+          id="box"
+          style={{ width: '100%', height: 300, position: 'relative' }}
+        >
+          <VideoPlayer
+            config={{
+              containerId: 'box',
+              vid: 'p0517q0h10d',
+              width: '100%',
+              height: '100%',
+              autoplay: true, //自动播放
+              showRecommendOnEnd: false, //不显示推荐
+              volume: 50, //默认声音
+              playerType: 'html5hd', //H5播放器
+              connectionPlayTime: 0 //续播时间
+            }}
+            url="http://vm.gtimg.cn/tencentvideo/txp/js/txplayer.js" //外网地址
+            plugins={[
+             plg
+            ]}
+          />
+        </div>
+      ),
+      code: `import { VideoPlayer } from 'sui-components';
+<div id="box" style={{ width: '100%', height: 300, position: 'relative' }}>
+  <VideoPlayer
+    config={{
+      containerId: 'box',
+      vid: 'p0517q0h10d',
+      width: '100%',
+      height: '100%',
+      autoplay: true, //自动播放
+      showRecommendOnEnd: false, //不显示推荐
+      volume: 50, //默认声音
+      playerType: 'html5hd', //H5播放器
+      connectionPlayTime: 0 //续播时间
+    }}
+    url="http://vm.gtimg.cn/tencentvideo/txp/js/txplayer.js" //外网地址
+  />
+</div>`
+    }
+  ]}
+  api={[
+    {
+      title: '',
+      data: [
+        {
+          key: '1',
+          params: 'url',
+          des: '播放器JS资源cdn地址,有内网oa版和外网版本，默认内网txp_oa版本',
+          type: 'string',
+          default: 'http://vm.gtimg.cn/tencentvideo/txp_oa/js/txplayer.js	'
+        },
+        {
+          key: '2',
+          params: 'showErrorMessage',
+          des: '是否直接将错误信息展示到挂载播放器的dom节点下',
+          type: 'bool',
+          default: 'true'
+        },
+        {
+          key: '3',
+          params: 'config',
+          des:
+            '播放器的配置参数 api文档：http://tvp.oa.com/txp/v3/src/jsapi/apis.html',
+          type: 'object',
+          default: '-'
+        },
+        {
+          key: '4',
+          params: 'onInit',
+          des:
+            '对象初始化后的回调，返回创建的点播播放器对象player，此时不是ready阶段; 参数：(player)=>{}',
+          type: 'function',
+          default: '-'
+        },
+        {
+          key: '5',
+          params: 'onError',
+          des:
+            '组件出错的回调，返回两种结果：加载失败loadError/播放错误playError 参数：(errorType, errorMessage)=>{}',
+          type: 'function',
+          default: '-'
+        }
+      ]
+    }
+  ]}
+/>

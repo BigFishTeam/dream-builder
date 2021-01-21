@@ -1,0 +1,77 @@
+---
+name: Avatar 头像
+menu: 数据展示
+---
+
+import Avatar from '../../core/components/avatar';
+import CodeBox from '../plugin/codeBox';
+
+## Avatar 头像
+
+``` js
+import { Avatar } from 'sui-components';
+```
+### 何时使用
+
+- 网站需要展示用户头像、个人中心等时
+
+### 使用方法
+
+<CodeBox
+  title="头像"
+  demo={[{
+      component: <Avatar account="Zenli" showName />,
+      code: `import { Avatar } from 'sui-components';\n` + 
+  `const avatarOptions = {
+    account: 'Zenli',
+    showName: true,
+    optionLinks: [
+      { iconName: 'setting', link: 'xxx.qq.com/user', linkName: '个人中心' }
+    ],
+    loginOutCallBack: () => {
+      alert('点击了登出按钮');
+    }
+};\n` +
+   `ReactDom.render(<Avatar {...avatarOptions}/>, document.getElementById('root'));`
+  }]}
+  api={[{
+      title: '',
+      data: [
+    {
+      key: '1',
+      params: 'head',
+      des: '用户头像url地址',
+      type: 'string',
+      default: "''"
+    },
+    {
+      key: '2',
+      params: 'account',
+      des:'用户账号：oa账号、qq号、昵称',
+      type: 'string',
+      default: "''"
+    },
+    {
+      key: '3',
+      params: 'optionLinks',
+      des:"操作的跳转链接；例：个人中心链接、系统设置链接等 [{iconName:'setting',link:'xxx.qq.com/user',linkName:'个人中心'}]",
+      type: 'array',
+      default: '[]'
+    },
+    {
+      key: '4',
+      params: 'loginOutCallBack',
+      des:'点击登出按钮的回调函数',
+      type: 'func',
+      default: '-'
+    },
+    {
+      key: '5',
+      params: 'showName',
+      des:'是否展示姓名',
+      type: 'bool',
+      default: 'false'
+    }
+  ]
+  }]}
+/>

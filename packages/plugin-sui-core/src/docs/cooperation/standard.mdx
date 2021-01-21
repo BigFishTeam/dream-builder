@@ -1,0 +1,79 @@
+## 规范
+
+### git相关 
+
+#### 项目初始阶段
+  各自新建以自己名字命名的分支（本地和远程），本地开发完后先拉取远程`dev`分支进行本地合并，然后提交到远程`自己的分支`，在git.oa上进行合并请求。
+#### 项目发展阶段
+  根据功能 `feature_xx_xx` 和 bug `fixed_xx_xx` 两类进行分支的命名。
+#### 请写好注释
+格式：`<type>(scope) subject`
+
+eg: `<feature>(menu) 增加路由自动展开`
+
+目前支持的type如下，scope不做限制，按照提交内容自行补齐
+```
+{
+  "types": {
+    "feature": {
+      "description": "新特性",
+      "title": "特性(Features)"
+    },
+    "hotfix": {
+      "description": "线上紧急修复的缺陷",
+      "title": "紧急缺陷修复(Hot Bug Fixes)"
+    },
+    "fix": {
+      "description": "缺陷修复",
+      "title": "缺陷修复(Bug Fixes)"
+    },
+    "docs": {
+      "description": "只变更了文档",
+      "title": "文档(Documentation)"
+    },
+    "style": {
+      "description": "只更改了代码样式而没有改变代码含义(white-space, formatting, missing semi-colons等)",
+      "title": "样式(Styles)"
+    },
+    "refactor": {
+      "description": "既没有修复缺陷也没有增加特性的变更",
+      "title": "代码重构(Code Refactoring)"
+    },
+    "perf": {
+      "description": "提升代码性能的变更",
+      "title": "性能提升(Performance Improvements)"
+    },
+    "test": {
+      "description": "增加确实的测试或修改不正确的测试",
+      "title": "测试(Tests)"
+    },
+    "build": {
+      "description": "那些影响构建系统或者外部依赖的变更(example scopes: gulp, broccoli, npm)",
+      "title": "构建(Builds)"
+    },
+    "ci": {
+      "description": "持续集成相关配置的变更(example scopes: Travis, Circle, BrowserStack, SauceLabs)",
+      "title": "持续集成(Continuous Integrations)"
+    },
+    "chore": {
+      "description": "其他一些没有修改源码和测试的变更",
+      "title": "零活(Chores)"
+    },
+    "revert": {
+      "description": "还原一个之前的提交",
+      "title": "还原(Reverts)"
+    }
+  }
+}
+```
+##### 增加commit hook用以检查提交项(2019年2月12日)
+主要增加三项新特性
+- 如果有lint warning直接构建失败
+- pre-commit hook对提交内容进行lint，和prettier
+- commit-msg hook对commit message进行校验，保证提交解释的规范
+
+如果需要进行交互式提交，可以使用`yarn commit`命令，也可以按之前提到的git提交规范进行提交
+
+#### 分支合并
+- 合并请求请填写一名`review人员`。 
+- git`提交`后要在企业微信内同步。

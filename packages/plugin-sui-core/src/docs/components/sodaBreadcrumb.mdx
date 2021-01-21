@@ -1,0 +1,83 @@
+---
+name: SodaBreadcrumb 面包屑
+menu: 导航
+---
+
+import SodaBreadcrumb from '../../core/components/sodaBreadcrumb';
+import CodeBox from '../plugin/codeBox';
+
+## SodaBreadcrumb 面包屑
+
+```js
+import { SodaBreadcrumb } from 'sui-components';
+```
+
+### 何时使用
+
+- 页面需要相关导航跳转、返回等操作时
+
+### 使用方法
+
+<CodeBox
+  title="面包屑"
+  demo={[
+    {
+      component: (
+        <SodaBreadcrumb
+          breadcrumbList={[
+            {
+              path: '/business/articleList',
+              name: '文章列表'
+            },
+            {
+              path: '/business/article',
+              name: '文章详情'
+            }
+          ]}
+          style={{
+            marginLeft: '20px',
+            marginTop: '20px'
+          }}
+        />
+      ),
+      code: `import { SodaBreadcrumb } from 'sui-components';
+<SodaBreadcrumb
+  breadcrumbList={[
+    {
+      path: '/business/articleList',
+      name: '文章列表'
+    },
+    {
+      path: '/business/article',
+      name: '文章详情'
+    }
+  ]}
+  style={{
+    marginLeft: '20px',
+    marginTop: '20px'
+  }}
+/>`
+    }
+  ]}
+  api={[
+    {
+      title: '',
+      data: [
+        {
+          key: '1',
+          params: 'breadcrumbList',
+          des: '面包屑项列表',
+          type: 'array',
+          default: '[]'
+        },
+        {
+          key: '2',
+          params: 'style',
+          des: '自定义样式',
+          type: 'object',
+          default: 'null'
+        }
+      ]
+    }
+  ]}
+/>

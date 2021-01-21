@@ -1,0 +1,34 @@
+/*
+ * @Author: zenli 
+ * @Date: 2018-12-14 17:24:14 
+ * @Last Modified by: zenli
+ * @Last Modified time: 2019-03-28 16:08:24
+ */
+
+@import './../../../themes/variables.less';
+
+@wait-check: ~'@{sui-prefix}-wait-check';
+.@{wait-check} {
+  width: 100%;
+  height: 100%;
+
+  .wait-check-positon {
+    position: relative;
+    // top: ~'calc(32.8% - 40px)';
+    top: 56px;
+    text-align: center;
+    .wait-num {
+      font-size: 18px;
+    }
+    .uncheck-num {
+      color: @warn-color;
+    }
+    .wait-check-btn {
+      margin-top: 20px;
+    }
+    .no-data {
+      line-height: 150px;
+      text-align: center;
+    }
+  }
+}

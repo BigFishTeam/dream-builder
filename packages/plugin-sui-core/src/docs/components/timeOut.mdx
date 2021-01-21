@@ -1,0 +1,63 @@
+---
+name: TimeOut 超时提示
+menu: 通用
+---
+
+import TimeOut from '@/core/components/timeOut';
+import CodeBox from '../plugin/codeBox';
+import { message } from 'antd';
+
+## TimeOut 超时提示
+
+```js
+import TimeOut from 'sui-components';
+```
+
+### 何时使用
+
+- 当审核页面有超时回库逻辑时可以使用
+
+### 使用方法
+
+<CodeBox
+  title="头像"
+  demo={[{
+      component: <TimeOut onTimeOut={() => { message.warning('时间到了'); }} />,
+      code: `import TimeOut from 'sui-components';
+import { message } from 'antd';
+<TimeOut onTimeOut={() => { message.warning('时间到了'); }} />`
+  }]}
+    api={[{
+        title: '',
+        data: [
+      {
+        key: '1',
+        params: 'time',
+        des: '倒计时时间',
+        type: 'number',
+        default: "600"
+      },
+      {
+        key: '2',
+        params: 'warningTime',
+        des:'倒计时警告时间',
+        type: 'number',
+        default: "60"
+      },
+      {
+        key: '3',
+        params: 'timeoutMessage',
+        des:'倒计时结束时提示文案',
+        type: 'string',
+        default: '太久未操作了,数据已回库~~~'
+      },
+      {
+        key: '4',
+        params: 'onTimeOut',
+        des:'倒计时结束时触发回调',
+        type: 'func',
+        default: "-"
+      }
+    ]
+    }]}
+/>

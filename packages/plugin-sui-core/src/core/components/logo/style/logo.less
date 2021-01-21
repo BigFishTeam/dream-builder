@@ -1,0 +1,60 @@
+/**
+ * @file index.less
+ * @date 2018-11-12 18.44.12
+ */
+@import './../../../themes/variables.less';
+
+@logo: ~'@{sui-prefix}-logo';
+.@{logo} {
+  padding: 18px 0;
+  margin-left: -10px;
+  display: -ms-flexbox;
+  display: flex;
+  color: @primary-color;
+  transition: color 0.3s;
+
+  &:hover {
+    cursor: pointer;
+    color: lighten(@primary-color, 5%);
+  }
+
+  .anticon {
+    font-size: 36px;
+    color: @primary-color;
+  }
+
+  .name {
+    margin-left: 10px;
+    width: 168px;
+    height: 36px;
+    overflow: hidden;
+    &:after {
+      display: inline-block;
+      content: '';
+      height: 100%;
+      width: 0;
+      vertical-align: middle;
+    }
+
+    svg {
+      vertical-align: middle;
+    }
+
+    .text {
+      white-space: nowrap;
+      font-size: 21px;
+      font-weight: 450;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: 36px;
+      letter-spacing: -0.5px;
+
+      &.win {
+        font-weight: bold;
+      }
+    }
+  }
+  .name-collapsed {
+    opacity: 0 !important;
+  }
+}

@@ -1,0 +1,28 @@
+---
+name: CollapsedTrigger 折叠
+menu: 通用
+---
+
+import CollapsedTrigger from '../../core/components/collapsedTrigger';
+import CodeBox from '../plugin/codeBox';
+
+## CollapsedTrigger 折叠
+
+```js
+import { CollapsedTrigger } from 'sui-components';
+```
+
+### 何时使用
+
+- 需要收起某一页卡时，可通过 CollapsedTrigger 控制
+
+### 使用方法
+
+<CodeBox
+  title="头像"
+  demo={[{
+      component: <CollapsedTrigger/>,
+      code: `import { CollapsedTrigger } from 'sui-components';
+ReactDom.render(<CollapsedTrigger/>, document.getElementById('app'));`
+  }]}
+/>

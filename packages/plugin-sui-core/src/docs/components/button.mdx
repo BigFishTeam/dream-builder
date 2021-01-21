@@ -1,0 +1,94 @@
+---
+name: SodaButton 按钮
+menu: 通用
+---
+
+import SodaButton from '@/core/components/button';
+import CodeBox from '../plugin/codeBox';
+
+
+## SodaButton 按钮
+
+``` js
+import { SodaButton } from 'sui-components';
+```
+### 按钮组
+  - 支持三种特别的button类型：pass、warn、delete
+  - 普通类型的button不传type
+
+<CodeBox
+  title="头像"
+  demo={[{
+      component: <SodaButton.SodaButtonGroup
+        config={[
+      {
+        type: 'pass',
+        value: 'pass',
+        label: '通过',
+        icon: 'check'
+      },
+      {
+        type: 'warn',
+        value: 'warn',
+        label: '不确定',
+        icon: 'question'
+      },
+      {
+        type: 'delete',
+        value: 'delete',
+        label: '删除',
+        icon: 'close'
+      }
+    ]}
+        onChange={() => {}}
+        defaultValue="pass"
+      />,
+      code: `import React, { Component } from 'react';
+import { SodaButton } from 'sui-components';
+const { SodaButtonGroup } = SodaButton;
+class SodaButtonGroupDemo extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectedType: ''
+    };
+  }
+  handleClick = value => {
+    console.log('changed:', value);
+    this.setState({
+      selectedType: value
+    });
+  };
+  render() {
+    const btnGroupConfig = [
+      {
+        type: 'pass',
+        value: 'pass',
+        label: '通过',
+        icon: 'check'
+      },
+      {
+        type: 'warn',
+        value: 'warn',
+        label: '不确定',
+        icon: 'question'
+      },
+      {
+        type: 'delete',
+        value: 'delete',
+        label: '删除',
+        icon: 'close'
+      }
+    ];
+    return (
+      <SodaButtonGroup
+        config={btnGroupConfig}
+        onChange={this.handleClick}
+        defaultValue="pass"
+      />
+    );
+  }
+}`
+  }]}
+  api={[]}
+/>

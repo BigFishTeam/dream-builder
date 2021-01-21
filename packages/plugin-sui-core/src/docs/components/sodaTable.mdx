@@ -1,0 +1,249 @@
+---
+name: SodaTable 表格
+menu: 数据展示
+---
+
+import Caption from '../../core/components/caption';
+import SodaTable from '../../core/components/sodaTable';
+import SodaPopover from '../../core/components/popover';
+import CodeBox from '../plugin/codeBox';
+import { Button, Radio, Icon } from 'antd';
+import { Select } from 'antd';
+const Option = Select.Option;
+
+## SodaTable 表格
+
+```js
+import { SodaTable } from 'sui-components';
+```
+
+### 何时使用
+
+- 表格需要左上角操作项、右上角说明时
+
+### 使用方法
+
+<CodeBox
+  title="表格"
+  demo={[
+    {
+      component: (
+        <SodaTable.BasicTable
+          columns={[
+            {
+              title: '姓名',
+              dataIndex: 'name',
+              key: 'name',
+              width: '20%'
+            },
+            {
+              title: '年龄',
+              dataIndex: 'age',
+              key: 'age',
+              width: '20%'
+            },
+            {
+              title: '住址',
+              dataIndex: 'address',
+              key: 'address',
+              width: '30%'
+            },
+            {
+              title: '操作',
+              dataIndex: 'action',
+              key: 'action',
+              width: '30%',
+              render: (text, record) => (
+                /* eslint-disable */
+                <span>
+                  <a href="javascript:;">查看</a>
+                </span>
+                /* eslint-enable */
+              )
+            }
+          ]}
+          dataSource={[
+            {
+              key: '1',
+              name: '胡彦斌',
+              age: 32,
+              address: '西湖区湖底公园1号'
+            },
+            {
+              key: '2',
+              name: '胡彦祖',
+              age: 42,
+              address: '西湖区湖底公园1号'
+            }
+          ]}
+          pagination={{
+            defaultCurrent: 1,
+            total: 100,
+            pageSize: 10,
+            showTotal: total => `共 ${total} 条`
+          }}
+          help={<SodaPopover popover={{ title: '说明情况' }} />} // 头部右上角帮助信息
+          actions={[
+            {
+              label: (
+                <>
+                  <Icon type="plus-circle" theme="filled" />
+                  <span>新建</span>
+                </>
+              ),
+              primary: true, // 主操作
+              doAction: () => {
+                alert('onClick 导出表格');
+              }
+            },
+            {
+              label: '导出表格',
+              doAction: () => {
+                alert('onClick 导出表格');
+              }
+            },
+            {
+              component: (
+                <Select
+                  style={{ width: 200, marginLeft: 10 }}
+                  placeholder="Select a person"
+                >
+                  <Option value="jack">Jack</Option>
+                  <Option value="lucy">Lucy</Option>
+                </Select>
+              )
+            }
+          ]} // 头部左上角操作项
+        />
+      ),
+      code: `import { SodaTable, SodaPopover } from 'sui-components';
+<SodaTable.BasicTable
+  columns={[
+    {
+      title: '姓名',
+      dataIndex: 'name',
+      key: 'name',
+      width: '20%'
+    },
+    {
+      title: '年龄',
+      dataIndex: 'age',
+      key: 'age',
+      width: '20%'
+    },
+    {
+      title: '住址',
+      dataIndex: 'address',
+      key: 'address',
+      width: '30%'
+    },
+    {
+      title: '操作',
+      dataIndex: 'action',
+      key: 'action',
+      width: '30%',
+      render: (text, record) => (
+        <span>
+          <a href="javascript:;">查看</a>
+        </span>
+      )
+    }
+  ]}
+  dataSource={[
+    {
+      key: '1',
+      name: '胡彦斌',
+      age: 32,
+      address: '西湖区湖底公园1号'
+    },
+    {
+      key: '2',
+      name: '胡彦祖',
+      age: 42,
+      address: '西湖区湖底公园1号'
+    }
+  ]}
+  pagination={{
+    defaultCurrent: 1,
+    total: 100,
+    pageSize: 10,
+    showTotal: total => '共' + total + '条'
+  }}
+  help={<SodaPopover popover={{ title: '说明情况' }} />} // 头部右上角帮助信息
+  actions={[
+    {
+      label: <><Icon type="plus-circle" theme="filled" /><span>新建</span></>,
+      primary: true, // 主操作
+      doAction: () => {
+        alert('onClick 导出表格');
+      }
+    },
+    {
+      label: '导出表格',
+      doAction: () => {
+        alert('onClick 导出表格');
+      }
+    },
+    { //完全自定义组件，启用此参数时候，其他参数不生效
+              component: 
+                <Select style={{ width: 200,marginLeft: 10 }} placeholder="Select a person">
+                  <Option value="jack" >Jack</Option>
+                  <Option value="lucy" >Lucy</Option>
+                </Select>
+            }
+  ]} // 头部左上角操作项
+/>`
+    }
+  ]}
+  api={[
+    {
+      title: '',
+      data: [
+        {
+          key: '1',
+          params: 'columns',
+          des: '表格列配置描述',
+          type: 'ColumnProps[]',
+          default: '[]'
+        },
+        {
+          key: '2',
+          params: 'dataSource',
+          des: '数据源',
+          type: 'any[]',
+          default: '[]'
+        },
+        {
+          key: '3',
+          params: 'pagination',
+          des:
+            '分页器，参考配置项或 pagination文档，设为 false 时不展示和进行分页',
+          type: 'bool | object',
+          default: 'false'
+        },
+        {
+          key: '4',
+          params: 'help',
+          des: '头部右上角帮助文档 需要时传入自定义的SodaPopover组件',
+          type: 'element',
+          default: 'null'
+        },
+        {
+          key: '5',
+          params: 'actions',
+          des: '表格左上角操作项支持两种模式：①使用默认的Button组件，此时需要的api是 label、doAction；②传入自定义组件，此时需要的api是 component',
+          type: 'array',
+          default: '[]'
+        },
+        {
+          key: '6',
+          params: 'showTable',
+          des:
+            '是否展示table（例：页面初始化有“新建”按钮的时候，可以隐藏table)',
+          type: 'bool',
+          default: 'true'
+        }
+      ]
+    }
+  ]}
+/>

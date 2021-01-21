@@ -33,6 +33,7 @@
     "lerna": "^3.22.0"
   },
   "scripts": {
+    "start": "node packages/create-dream/src/index.ts",
     "commit": "git-cz",
     "release": "standard-version"
   },

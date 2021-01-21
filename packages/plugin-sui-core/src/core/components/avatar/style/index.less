@@ -1,0 +1,61 @@
+@import './../../../themes/variables.less';
+
+@avatar: ~'@{sui-prefix}-avatar';
+
+.@{avatar} {
+  display: flex;
+  align-items: center;
+  .head-wrapper {
+    display: flex;
+    align-items: center;
+  }
+  .avatar-head {
+    border-radius: 100%;
+    width: 36px;
+    cursor: pointer;
+  }
+  .anticon {
+    font-size: 30px;
+  }
+  .head-name {
+    &:empty {
+      margin-left: 0;
+    }
+    margin-left: 5px;
+    color: rgba(0, 0, 0, 0.65);
+  }
+  .head-icon-default {
+    border-radius: 50%;
+    background: #fff;
+    display: inline-block;
+  }
+  .head-icon-login {
+    .anticon {
+      color: @primary-color;
+    }
+  }
+  .head-icon-unlogin {
+    .anticon {
+      color: @icon-default-color;
+    }
+  }
+}
+.@{avatar}-pop {
+  & > li {
+    text-align: left;
+    min-width: 120px;
+  }
+  li&-nick {
+    //font-size: 18px;
+    //text-align: center;
+    cursor: default !important; //覆盖disabled时候的手势图标
+    // border-bottom: 1px solid #e8e8e8;
+  }
+  &-loginout {
+    color: #ccc;
+    border-top: 1px solid #e8e8e8;
+  }
+  a > span {
+    margin-left: 8px;
+  }
+}

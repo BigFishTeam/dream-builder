@@ -1,0 +1,149 @@
+---
+name: ReviewClassificationButtonGroup 审核按钮组
+menu: 导航
+---
+import ReviewClassificationButtonGroup from '../../core/components/reviewClassificationButtonGroup';
+import CodeBox from '../plugin/codeBox';
+
+## ReviewClassificationButtonGroup 审核按钮组
+
+```js
+import { ReviewClassificationButtonGroup } from 'sui-components';
+```
+### 何时使用
+
+- 需要进行视频的审核分类时，附带了联动备注
+
+### 使用方法
+<CodeBox title="审核按钮组"
+         demo={[{
+          component:<ReviewClassificationButtonGroup  onChange={info => {console.log(info)}} 
+                                                    onRemarkChange={remark => {console.log(remark)}}
+                                                    normal = {{title:"自定义正常"}}
+                                                    harmful = {[{
+                                                      title: '色情',
+                                                      info: {},
+                                                      color: 'red'
+                                                    }, {
+                                                      title: '政治',
+                                                      info: {},
+                                                      color: 'green'
+                                                    }]}
+                                                    withRemarkBar = {true}/>,
+          code:`import { ReviewClassificationButtonGroup } from 'sui-components';
+export default () => <ReviewClassificationButtonGroup  onChange={info => {console.log(info)}} 
+                                                                         onRemarkChange={remark => {console.log(remark)}}
+                                                                         normal = {{title:"自定义正常"}}
+                                                                         harmful = {[{
+                                                                           title: '色情',
+                                                                           info: {},
+                                                                           color: 'red'
+                                                                         }, {
+                                                                           title: '政治',
+                                                                           info: {},
+                                                                           color: 'green'
+                                                                         }]}
+                                                                         withRemarkBar = {true}/>
+                   `
+         },
+         ]}
+         api={
+         [{
+                 title: '',
+                 data: [
+               {
+                 key: '1',
+                 params: 'normal',
+                 des: '正常状态下的文字',
+                 type: '{title: "", info: {}}',
+                 default: '正常'
+               },
+               {
+                 key: '2',
+                 params: 'harmful',
+                 des: '非正常状态下的按钮组信息',
+                 type: 'array[]',
+                 default: "[]"
+               },
+               {
+                 key: '3',
+                 params: 'onChange',
+                 des:'在选择类别切换时触发的回调',
+                 type: '(info) => {}',
+                 default: "() => {}"
+               },
+               {
+                 key: '4',
+                 params: 'onRemarkChange',
+                 des: '在备注信息变更时触发的回调',
+                 type: '(remark:string) => {}',
+                 default: '() => {}'
+               },
+               {
+                 key: '7',
+                 params: 'onHarmfulTypeChange',
+                 des: '在危险种类分类变化时的回调',
+                 type: '(info) => {}',
+                 default: '() => {}'
+               },
+               {
+                 key: '5',
+                 params: 'withHarmfulTypeBar',
+                 des: '是否具有危险种类分类bar',
+                 type: 'boolean',
+                 default: 'true'
+               },
+               {
+                 key: '6',
+                 params: 'withRemarkBar',
+                 des: '是否具有备注bar',
+                 type: 'boolean',
+                 default: 'true'
+               },
+               {
+                 key: '9',
+                 params: 'withNormalButton',
+                 des: '是否具有正常按钮',
+                 type: 'boolean',
+                 default: 'true'
+               },
+               {
+                 key: '8',
+                 params: 'harmfulType',
+                 des: '危险种类分类中的分类，第一个为正常时候的状态，其余为非正常状态',
+                 type: '{title: "", info: {}}[]',
+                 default: 'true'
+               }
+             ]
+             }, {
+               title: 'harmful中的元素',
+               data: [{
+                 key: '1',
+                 params: 'title',
+                 des: '有害类的题目',
+                 type: 'string',
+                 default: 'null'
+               },
+                {
+                  key: '2',
+                  params: 'info',
+                  des: '需要传入的信息',
+                  type: 'array',
+                  default: 'null'
+               },
+               {
+                 key: '3',
+                 params: 'color',
+                 des: '被选中时的颜色',
+                 type: 'string',
+                 default: 'null'
+               },      
+               {
+                 key: '4',
+                 params: 'any',
+                 des: '任何想要添加的信息',
+                 type: 'any',
+                 default: 'null'
+               }]
+              }]
+         }/>

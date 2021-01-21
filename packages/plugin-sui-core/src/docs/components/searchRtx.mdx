@@ -1,0 +1,90 @@
+---
+name: SearchRtx
+menu: 通用
+---
+
+import SearchRTX from '@/core/components/searchRtx';
+import CodeBox from '../plugin/codeBox';
+import { message } from 'antd';
+
+## SearchRTX 搜索rtx名称
+
+```js
+import { SearchRTX } from 'sui-components';
+```
+
+### 何时使用
+
+- 当搜索RTX名称的时候可以使用
+
+### 使用方法
+
+<CodeBox
+  demo={[
+    {
+      component: (
+        <SearchRTX style={{width: '200px'}} placeholder="请输入创建人"/>
+      ),
+      code: `import SearchRTX from 'sui-components';
+// 可传antd中Select其他的api
+// 不使用form表单时, 使用value、onChange的方式受控组件
+<SearchRTX
+  style={{width: '200px'}}
+  placeholder='请输入创建人'
+  value={this.state.creator}
+  onChange={value => this.setState({
+    creator: value
+  })}
+/>
+// 使用form表单时
+<Form.Item style={{width: '200px'}}>
+  {getFieldDecorator('creator')(
+    <SearchRTX
+      placeholder='请输入创建人'
+      restrictWrite={false}
+    />
+  )}
+</Form.Item>;`
+    }
+  ]}
+  api={[
+    {
+      title: '',
+      data: [
+        {
+          key: '1',
+          params: 'value',
+          des: '输入框内容',
+          type: 'string(单选) | array(多选)'
+        },
+        {
+          key: '2',
+          params: 'onChange',
+          des: '输入框内容变化时的回调',
+          type: 'function'
+        },
+        {
+          key: '3',
+          params: 'timeout',
+          des: '用于搜索的延时时间（毫秒）',
+          type: 'string | number',
+          default: '300'
+        },
+        {
+          key: '4',
+          params: 'format',
+          des: '是否格式化控件值（true:省略中文名 | false:默认不格式化）',
+          type: 'bool',
+          default: 'true'
+        },
+        {
+          key: '5',
+          params: 'restrictWrite',
+          des: '是否限制只按列表选择项写入表单（单选模式）为了防止搜索接口挂掉，默认为false(可手动填入内容)',
+          type: 'bool',
+          default: 'false'
+        }
+      ]
+    }
+  ]}
+/>

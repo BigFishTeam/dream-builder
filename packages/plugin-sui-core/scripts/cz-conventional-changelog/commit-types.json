@@ -1,0 +1,52 @@
+{
+  "types": {
+    "feat": {
+      "description": "新特性",
+      "title": "特性(Features)"
+    },
+    "hotfix": {
+      "description": "线上紧急修复的缺陷",
+      "title": "紧急缺陷修复(Hot Bug Fixes)"
+    },
+    "fix": {
+      "description": "缺陷修复",
+      "title": "缺陷修复(Bug Fixes)"
+    },
+    "docs": {
+      "description": "只变更了文档",
+      "title": "文档(Documentation)"
+    },
+    "style": {
+      "description": "只更改了代码样式而没有改变代码含义(white-space, formatting, missing semi-colons等)",
+      "title": "样式(Styles)"
+    },
+    "refactor": {
+      "description": "既没有修复缺陷也没有增加特性的变更",
+      "title": "代码重构(Code Refactoring)"
+    },
+    "perf": {
+      "description": "提升代码性能的变更",
+      "title": "性能提升(Performance Improvements)"
+    },
+    "test": {
+      "description": "增加确实的测试或修改不正确的测试",
+      "title": "测试(Tests)"
+    },
+    "build": {
+      "description": "那些影响构建系统或者外部依赖的变更(example scopes: gulp, broccoli, npm)",
+      "title": "构建(Builds)"
+    },
+    "ci": {
+      "description": "持续集成相关配置的变更(example scopes: Travis, Circle, BrowserStack, SauceLabs)",
+      "title": "持续集成(Continuous Integrations)"
+    },
+    "chore": {
+      "description": "其他一些没有修改源码和测试的变更",
+      "title": "零活(Chores)"
+    },
+    "revert": {
+      "description": "还原一个之前的提交",
+      "title": "还原(Reverts)"
+    }
+  }
+}

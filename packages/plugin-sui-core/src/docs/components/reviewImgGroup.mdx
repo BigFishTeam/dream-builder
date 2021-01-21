@@ -1,0 +1,209 @@
+---
+name: ReviewImgGroup 图片组
+menu: 导航
+---
+
+import ReviewImgGroup from '../../core/components/reviewImgGroup';
+import CodeBox from '../plugin/codeBox';
+
+## ReviewImgGroup 审核图片组
+
+```js
+import { ReviewImgGroup } from 'sui-components';
+```
+### 何时使用
+
+- 需要使用图片组进行审核（附带常规操作：看大图、打开副屏）时。
+
+### 使用方法
+
+<CodeBox
+  title="审核图片组"
+  demo={[{
+    title:'hover后查看大图',
+    component: <ReviewImgGroup imgWidth={100} 
+                               imgHeight={100} 
+                               col={4}
+                               imgs={[{
+                                  url: 'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg',
+                                  burl: 'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg',
+                                  footerInfo: '封面图',
+                                  events: {
+                                    hover: 'bigImg'
+                                  }
+                                }, {
+                                  url: 'https://gw.alipayobjects.com/zos/rmsportal/tXlLQhLvkEelMstLyHiN.svg',
+                                  sidePageUrl: 'http://www.baidu.com',
+                                  events: {
+                                    dbclick: 'bigImg'
+                                  }
+                                }, {url: 'https://gw.alipayobjects.com/zos/rmsportal/tXlLQhLvkEelMstLyHiN.svg'},
+                                {url: 'https://gw.alipayobjects.com/zos/rmsportal/tXlLQhLvkEelMstLyHiN.svg'},
+                                {url: 'https://gw.alipayobjects.com/zos/rmsportal/tXlLQhLvkEelMstLyHiN.svg'},
+                                {url: 'https://gw.alipayobjects.com/zos/rmsportal/tXlLQhLvkEelMstLyHiN.svg'}]}/>,
+    code: `import { ReviewImgGroup } from 'sui-components';
+    export default () => {
+      return (
+        <ReviewImgGroup imgWidth={'50px'} 
+                        imgHeight={'50px'} 
+                        imgs={[{
+                                url: 'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg',
+                                burl: 'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg',
+                                events: {
+                                  hover: 'bigImg'
+                                 }
+                              }]}/>
+      )
+    }`
+  }, {
+  title:'两次click后打开副屏',
+      component: <ReviewImgGroup imgWidth={50} 
+                                 imgHeight={50} 
+                                 imgs={[{
+                                    url: 'https://gw.alipayobjects.com/zos/rmsportal/tXlLQhLvkEelMstLyHiN.svg',
+                                    sidePageUrl: 'http://www.tencent.com',
+                                    events: {
+                                      dbclick: 'sidePage'
+                                    }
+                                  }]}/>,
+      code: `import { ReviewImgGroup } from 'sui-components';
+      export default () => {
+        return (
+          <ReviewImgGroup imgWidth={'50px'} 
+                          imgHeight={'50px'} 
+                          imgs={[{
+                                  url: 'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg',
+                                  sidePageUrl: 'http://www.tencent.com',
+                                  burl: 'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg',
+                                  events: {
+                                    dbclick: 'sidePage'
+                                   }
+                                }]}/>
+        )
+      }`
+  },
+  {
+    title:'单次click后触发自定义事件，并且获取传入的信息',
+        component: <ReviewImgGroup imgWidth={50} 
+                                   imgHeight={50} 
+                                   imgs={[{
+                                      url: 'https://gw.alipayobjects.com/zos/rmsportal/tXlLQhLvkEelMstLyHiN.svg',
+                                      events: {
+                                        click: info => {alert(info.url)}
+                                      }
+                                    }]}/>,
+        code: `import { ReviewImgGroup } from 'sui-components';
+        export default () => {
+          return (
+                   <ReviewImgGroup imgWidth={50} 
+                                   imgHeight={50} 
+                                   imgs={[{
+                                      url: 'https://gw.alipayobjects.com/zos/rmsportal/tXlLQhLvkEelMstLyHiN.svg',
+                                      events: {
+                                        click: info => {alert(info.url)}
+                                      }
+                                    }]}/>
+          )
+        }`
+    }]}
+  api={[{
+        title: '',
+        data: [
+      {
+        key: '1',
+        params: 'imgWidth',
+        des: '图片组中图片的宽度',
+        type: 'number',
+        default: '100'
+      },
+      {
+        key: '2',
+        params: 'imgHeight',
+        des:'图片组中图片的高度',
+        type: 'number',
+        default: "100"
+      },
+      {
+        key: '3',
+        params: 'col',
+        des:'图片组中每列图片的数目',
+        type: 'number',
+        default: "5"
+      },
+      {
+        key: '4',
+        params: 'imgs',
+        des: '图片列表,并且包含了要传入的信息',
+        type: 'array',
+        default: '[]'
+      }
+    ]
+    }, {
+      title: 'imgs中的元素',
+      data: [{
+        key: '1',
+        params: 'url',
+        des: '图片url',
+        type: 'string',
+        default: 'null'
+      },
+       {
+         key: '2',
+         params: 'burl',
+         des: '大图url，如果没有的话，在展示大图时会使用小图链接',
+         type: 'string',
+         default: 'null'
+      },
+      {
+        key: '3',
+        params: 'sidePageUrl',
+        des: '在使用内置的打开副屏功能时的副屏链接',
+        type: 'string',
+        default: 'null'
+      },      
+      {
+        key: '4',
+        params: 'footerInfo',
+        des: '底部信息',
+        type: 'string|React Node',
+        default: 'null'
+      }, 
+      {
+        key: '5',
+        params: 'events',
+        des: '事件',
+        type: 'object',
+        default: 'null'
+      },
+      {
+        key: '6',
+        params: 'any param',
+        des: '可以在这里传入任意想要给自定义事件传入的信息',
+        type: 'any',
+        default: 'null'
+      }]
+    }, {
+      title: 'events',
+      data: [{
+        key: '1',
+        params: 'click',
+        des: '点击时触发的事件，可以传入函数也可以传入bigImg或sidePage，这是两个内置功能，分别为大图和副屏',
+        type: '(info) => {} | "bigImg" | "sidePage"',
+        default: 'null'
+      }, 
+      {
+        key: '2',
+        params: 'dbclick',
+        des: '双击时触发的事件，可以传入函数也可以传入bigImg或sidePage，这是两个内置功能，分别为大图和副屏',
+        type: '(info) => {} | "bigImg" | "sidePage"',
+        default: 'null'
+      }, 
+      {
+         key: '3',
+         params: 'hover',
+         des: '光标移动到此时触发的事件，可以传入函数也可以传入bigImg或sidePage，这是两个内置功能，分别为大图和副屏',
+         type: '(info) => {} | "bigImg" | "sidePage"',
+         default: 'null'
+       }]
+    }]}
+/>

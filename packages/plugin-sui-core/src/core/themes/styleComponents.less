@@ -1,0 +1,52 @@
+/*
+ * @Author: zenli 
+ * @Date: 2018-12-17 14:56:36 
+ * @Last Modified by: zenli
+ * @Last Modified time: 2019-03-12 18:43:07
+ */
+
+/*
+  *************
+  sui通用样式组件
+  *************
+*/
+
+@import './variables.less';
+
+//主标题
+.@{sui-prefix}-title {
+  display: block;
+  font-size: 24px;
+  margin-bottom: 28px;
+}
+//无数据的展示字体样式
+.@{sui-prefix}-nothing {
+  color: @text-color-secondary;
+  font-size: 22px;
+  text-align: center;
+}
+//红色警告按钮
+.@{sui-prefix}-btn-danger {
+  color: #fff !important;
+  background-color: @warn-color !important;
+  border-color: @warn-color !important;
+}
+
+.@{sui-prefix}-btn-danger:hover,
+.@{sui-prefix}-btn-danger:focus {
+  background-color: lighten(@warn-color, 8%) !important;
+  border-color: lighten(@warn-color, 8%) !important;
+}
+
+//审核通过的背景色
+.@{sui-prefix}-pass-bg-color {
+  background-color: @pass-bg-color;
+}
+//审核不通过的背景色
+.@{sui-prefix}-delete-bg-color {
+  background-color: @delete-bg-color;
+}
+//sui默认的icon样式
+.@{sui-prefix}-icon-default {
+  color: @icon-default-color;
+}

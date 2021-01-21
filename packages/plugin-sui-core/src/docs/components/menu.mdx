@@ -1,0 +1,292 @@
+---
+name: Menu 菜单
+menu: 导航
+---
+
+import Menu from '../../core/components/menu';
+import CodeBox from '../plugin/codeBox';
+import { Icon } from 'antd';
+
+## Menu 菜单
+
+```js
+import { Menu } from 'sui-components';
+```
+
+### 何时使用
+
+- 网站需要左侧菜单时使用
+- 支持带二级标签（如：左侧菜单里的"基础"、"布局"、"导航"）和不带二级标签两种形式
+- 菜单级别不能超过三级
+
+### 使用方法
+
+<CodeBox
+  title="菜单"
+  demo={[
+    {
+      title: '带二级标签',
+      component: (
+        <Menu
+          menuData={[
+            {
+              path: '/base',
+              icon: <Icon type="appstore" />, // 传入antd Icon组件
+              name: '组件',
+              routes: [
+                {
+                  tagname: '基础',
+                  routes: [
+                    {
+                      path: '/base/styleComponents',
+                      name: '样式类组件'
+                    },
+                    {
+                      path: '/base/table',
+                      name: '表格'
+                    },
+                    {
+                      path: '/base/caption',
+                      name: '模块标题'
+                    },
+                    {
+                      path: '/base/form',
+                      name: '表单'
+                    },
+                    {
+                      path: '/base/waitCheck',
+                      name: '待审量'
+                    },
+                    {
+                      path: '/base/videoPlayer',
+                      name: '点播播放器'
+                    },
+                    {
+                      path: '/base/httpError',
+                      name: '异常页面'
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              path: '/business',
+              name: '业务',
+              icon: <Icon type="layout" />,
+              routes: [
+                {
+                  tagname: '多级路由',
+                  routes: [
+                    {
+                      path: '/business/articleList',
+                      name: '文章列表'
+                    }
+                  ]
+                }
+              ]
+            }
+          ]}
+          defaultSelectedKey="/base/styleComponents"
+        />
+      ),
+      code: `import { Menu } from 'sui-components';
+<Menu
+  menuData={[
+    {
+      path: '/base',
+      icon: <Icon type="appstore" />, // 传入antd Icon组件
+      name: '组件',
+      routes: [
+        {
+          tagname: '基础',
+          routes: [
+            {
+              path: '/base/styleComponents',
+              name: '样式类组件'
+            },
+            {
+              path: '/base/table',
+              name: '表格'
+            },
+            {
+              path: '/base/caption',
+              name: '模块标题'
+            },
+            {
+              path: '/base/form',
+              name: '表单'
+            },
+            {
+              path: '/base/waitCheck',
+              name: '待审量'
+            },
+            {
+              path: '/base/videoPlayer',
+              name: '点播播放器'
+            },
+            {
+              path: '/base/httpError',
+              name: '异常页面'
+            }
+          ]
+        }
+      ]
+    },
+    {
+      path: '/business',
+      name: '业务',
+      icon: <Icon type="layout" />,
+      routes: [
+        {
+          tagname: '多级路由',
+          routes: [
+            {
+              path: '/business/articleList',
+              name: '文章列表'
+            }
+          ]
+        }
+      ]
+    }
+  ]}
+  defaultSelectedKey="/base/styleComponents"
+/>`
+    },
+    {
+      title: '不带二级标签',
+      component: (
+        <Menu
+          menuData={[
+            {
+              path: '/base',
+              icon: <Icon type="appstore" />, // 传入antd Icon组件
+              name: '组件',
+              routes: [
+                {
+                  path: '/base/styleComponents',
+                  name: '样式类组件'
+                },
+                {
+                  path: '/base/table',
+                  name: '表格'
+                },
+                {
+                  path: '/base/caption',
+                  name: '模块标题'
+                },
+                {
+                  path: '/base/form',
+                  name: '表单'
+                },
+                {
+                  path: '/base/waitCheck',
+                  name: '待审量'
+                },
+                {
+                  path: '/base/videoPlayer',
+                  name: '点播播放器'
+                },
+                {
+                  path: '/base/httpError',
+                  name: '异常页面'
+                }
+              ]
+            },
+            {
+              path: '/business',
+              name: '业务',
+              icon: <Icon type="layout" />,
+              routes: [
+                {
+                  path: '/business/articleList',
+                  name: '文章列表'
+                }
+              ]
+            }
+          ]}
+          defaultSelectedKey="/base/styleComponents"
+        />
+      ),
+      code: `import { Menu } from 'sui-components';
+<Menu
+  menuData={[
+    {
+      path: '/base',
+      icon: <Icon type="appstore" />, // 传入antd Icon组件
+      name: '组件',
+      routes: [
+        {
+          path: '/base/styleComponents',
+          name: '样式类组件'
+        },
+        {
+          path: '/base/table',
+          name: '表格'
+        },
+        {
+          path: '/base/caption',
+          name: '模块标题'
+        },
+        {
+          path: '/base/form',
+          name: '表单'
+        },
+        {
+          path: '/base/waitCheck',
+          name: '待审量'
+        },
+        {
+          path: '/base/videoPlayer',
+          name: '点播播放器'
+        },
+        {
+          path: '/base/httpError',
+          name: '异常页面'
+        }
+      ]
+    },
+    {
+      path: '/business',
+      name: '业务',
+      icon: <Icon type="layout" />,
+      routes: [
+        {
+          path: '/business/articleList',
+          name: '文章列表'
+        }
+      ]
+    }
+  ]}
+  defaultSelectedKey="/base/styleComponents"
+/>`
+    }
+  ]}
+  api={[
+    {
+      title: '',
+      data: [
+        {
+          key: '1',
+          params: 'menuData',
+          des: 'menu配置数据 参考/src/menu.config.js中的data字段',
+          type: 'array',
+          default: '[]'
+        },
+        {
+          key: '2',
+          params: 'defaultSelectedKey',
+          des: '默认选中路由 参考/src/menu.config.js中的defaultSelectedKey字段',
+          type: 'string',
+          default: "''"
+        },
+        {
+          key: '3',
+          params: 'collapsed',
+          des: 'menu是否折叠',
+          type: 'bool',
+          default: 'false'
+        }
+      ]
+    }
+  ]}
+/>

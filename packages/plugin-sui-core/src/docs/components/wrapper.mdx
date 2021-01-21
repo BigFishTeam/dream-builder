@@ -1,0 +1,207 @@
+---
+name: Wrapper 布局容器
+menu: 布局
+---
+
+import { Button } from 'antd';
+
+import Wrapper from '../../core/components/wrapper';
+import Logo from '../../core/components/logo';
+import BrowserUpdate from '../../core/components/browserUpdate';
+import Menu from '../../core/components/menu';
+import RouterPage from '../../core/components/routerPage';
+import Avatar from '../../core/components/avatar';
+import CodeBox from '../plugin/codeBox';
+
+import logoImg from 'sui-icons/lib/geekLogo';
+import menuRoutes from '@/menu.config';
+import pageRoutes from '@/routerPage.config';
+const { PageWrapper, LeftWrapper, RightWrapper, Header, Content } = Wrapper;
+const avatarOptions = {
+  account: 'Zenli',
+  optionLinks: [
+    { iconName: 'setting', link: 'xxx.qq.com/user', linkName: '个人中心' }
+  ],
+  loginOutCallBack: () => {
+    alert('点击了登出按钮');
+  }
+};
+
+## Wrapper 布局容器
+
+```js
+import { Wrapper } from 'sui-components';
+const {
+  PageWrapper,
+  LeftWrapper,
+  RightWrapper,
+  Header,
+  Content,
+  NarrowContent
+} = Wrapper;
+```
+
+### 何时使用
+
+- 需要左右两栏布局时使用，由 LeftWrapper 和 RightWrapper 组成
+- LeftWrapper 通常包含网站 Logo 和 Menu 菜单
+- RightWrapper 通常包含头部 Header 和内容区域（宽边距 Content 和窄边距 NarrowContent 两种）
+
+### 示例
+
+```js
+import React, { Component } from 'react';
+import { Wrapper, Avatar, Logo, Menu, RouterPage, BrowserUpdate } from './core';
+import logoImg from './SSvg';
+// menu配置
+import menuRoutes from '@/menu.config';
+// 页面配置
+import pageRoutes from '@/routerPage.config';
+import './styles/index.less';
+
+const { PageWrapper, LeftWrapper, RightWrapper, Header } = Wrapper;
+//个人中心参数使用参考
+let avatarOptions = {
+  //head:avatarImg,
+  account: 'Zenli',
+  optionLinks: [
+    { iconName: 'setting', link: 'xxx.qq.com/user', linkName: '个人中心' }
+  ],
+  loginOutCallBack: () => {
+    alert('点击了登出按钮');
+  }
+};
+
+class App extends Component {
+  render() {
+    return (
+      /*
+       * 默认为 partScroll 局部（左右分别）滚动,不需传参
+       * globalScroll 整体滚动,示例如下：
+       * <PageWrapper layoutType="globalScroll"></PageWrapper>
+       * 
+       * 自定义触发导航收起：
+       * ①给 pageWrapper组件传递 collapsed 来传递自定义收起展开
+       * ②给 header组件传 triggerOnClick 来定义触发function
+       * 扩展功能：给 header组件传递 trigger={null} 则不渲染sui的trigger组件
+       * 也可以自定义事件来触发 <Button onClick={()=>{this.setState({collapsed: !this.state.collapsed})}} >控制</Button>
+       */
+      <PageWrapper>
+        <BrowserUpdate />
+        <LeftWrapper>
+          <Logo img={logoImg} text="SUI-指南" url="/" />
+          {/* 使用svg logo */}
+          {/* <Logo img={logoImg} text={logoText} url={'/'} /> */}
+          <Menu
+            menuData={menuRoutes.data}
+            defaultSelectedKey={menuRoutes.defaultSelectedKey}
+          />
+        </LeftWrapper>
+        {/* layoutType="globalScroll"时，可选择：白色背景跟随内容高度自适应 or 白色背景最小高度为窗口height的100% */}
+        {/* 默认白色背景跟随内容自适应高度 */}
+        {/* 白色背景最小高度为窗口height的100% 取值： <RightWrapper adaptable={true} > */}
+        <RightWrapper>
+          <Header>
+            <Avatar {...avatarOptions} />
+          </Header>
+          <RouterPage routeData={pageRoutes} />
+        </RightWrapper>
+      </PageWrapper>
+    );
+  }
+}
+
+export default App;
+```
+
+<CodeBox
+  title="logo"
+  demo={[
+    { title: '整体（全局）滚动的实例，右侧内容区自适应高度',
+      component: (
+        <div style={{height:500,overflow:'scroll',background: '#f7f9f8'}}  >
+          <PageWrapper layoutType="globalScroll" >
+            <LeftWrapper>
+              <Logo img={logoImg} text="SUI-DEMO" url="/" />
+              <Menu
+                menuData={menuRoutes.data}
+              />
+            </LeftWrapper>
+            <RightWrapper>
+              <Header>
+                <Avatar {...avatarOptions} />
+              </Header>
+              <Content>
+                <p>我是正文</p>
+                <p>我是正文</p>
+                <p>我是正文</p>
+              </Content>
+            </RightWrapper>
+          </PageWrapper>
+        </div>
+      ),
+      code: `<PageWrapper layoutType="globalScroll" >
+      <LeftWrapper>
+          <Logo img={logoImg} text="SUI-DEMO" url="/" />
+          <Menu
+            menuData={menuRoutes.data}
+          />
+      </LeftWrapper>
+      <RightWrapper>
+          <Header>
+            <Avatar {...avatarOptions} />
+          </Header>
+          <Content>
+            <p>我是正文</p>
+            <p>我是正文</p>
+            <p>我是正文</p>
+          </Content>
+      </RightWrapper>
+</PageWrapper>`
+    },{ title: '控制导航收起',
+      component: (
+       <></>
+      ),
+      code: `
+      <PageWrapper layoutType="globalScroll" collapsed={this.state.collapsed} >
+      <LeftWrapper>
+          <Logo img={logoImg} text="SUI-DEMO" url="/" />
+          <Menu
+            menuData={menuRoutes.data}
+          />
+      </LeftWrapper>
+      <RightWrapper>
+          <Header triggerOnClick={ ()=>{this.setState({collapsed: !this.state.collapsed})}} }  >
+            <Avatar {...avatarOptions} />
+          </Header>
+          <Content>
+            <Button onClick={()=>{this.setState({collapsed: !this.state.collapsed})}} >控制</Button>
+          </Content>
+      </RightWrapper>
+</PageWrapper>`
+    }
+  ]}
+  api={[
+    {
+      title: '',
+      data: [
+        {
+          key: '1',
+          params: 'layoutType',
+          des:
+            'sui布局参数。使用方式：<PageWrapper layoutType="globalScroll"></PageWrapper>。取值：整体滚动-"globalScroll" | 左右分开溢出滚动"partScroll" ',
+          type: 'string',
+          default: 'partScroll'
+        },
+        {
+          key: '2',
+          params: 'adaptable',
+          des:
+            'layoutType="globalScroll"即整体滚动布局时，右侧内容区可选择：白色背景跟随内容高度自适应 or 白色背景最小高度为窗口height的100%;<RightWrapper adaptable={true} >',
+          type: 'bool',
+          default: 'false'
+        }
+      ]
+    }
+  ]}
+/>

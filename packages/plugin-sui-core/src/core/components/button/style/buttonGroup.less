@@ -1,0 +1,50 @@
+@import './../../../themes/variables.less';
+
+@btn: ~'@{sui-prefix}-btn';
+
+.@{btn} {
+  &-pass:hover {
+    color: @primary-color;
+    border-color: @primary-color;
+  }
+  &-pass:focus {
+    color: @primary-color;
+    border-color: @primary-color;
+  }
+  &-warn:hover {
+    color: @unsure-color;
+    border-color: @unsure-color;
+  }
+  &-warn:focus {
+    color: @unsure-color;
+    border-color: @unsure-color;
+  }
+  &-delete:hover {
+    color: @delete-color;
+    border-color: @delete-color;
+  }
+  &-delete:focus {
+    color: @delete-color;
+    border-color: @delete-color;
+  }
+}
+
+.@{btn}.active {
+  color: @primary-color;
+  border-color: @primary-color;
+}
+
+.@{btn}.@{btn}-pass.active {
+  color: @primary-color;
+  border-color: @primary-color;
+}
+
+.@{btn}.@{btn}-warn.active {
+  color: @unsure-color;
+  border-color: @unsure-color;
+}
+
+.@{btn}.@{btn}-delete.active {
+  color: @delete-color;
+  border-color: @delete-color;
+}

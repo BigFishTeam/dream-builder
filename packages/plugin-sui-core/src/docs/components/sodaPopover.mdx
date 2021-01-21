@@ -1,0 +1,46 @@
+---
+name: SodaPopover 气泡卡片
+menu: 数据展示
+---
+
+import SodaPopover from '../../core/components/popover';
+import CodeBox from '../plugin/codeBox';
+
+## SodaPopover 气泡卡片
+
+```js
+import { SodaPopover } from 'sui-components';
+```
+### 何时使用
+
+- 为表格、列表等组件添加操作说明时
+
+### 使用方法
+
+<CodeBox
+  title="气泡卡片"
+  demo={[{
+      component: <SodaPopover label="我是标题" popover={{title: '说明', content: '待完善......'}} />,
+      code: `import { SodaPopover } from 'sui-components';
+<SodaPopover label="我是标题" popover={{title: '说明', content: '待完善......'}} />`
+  }]}
+  api={[{
+      title: '',
+      data: [
+    {
+      key: '1',
+      params: 'label',
+      des: '标题',
+      type: 'string',
+      default: "'帮助'"
+    },
+    {
+      key: '2',
+      params: 'popover',
+      des:'解释说明 支持antd Popover的title、content两个参数',
+      type: 'object',
+      default: "{}"
+    }
+  ]
+  }]}
+/>

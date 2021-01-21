@@ -1,0 +1,67 @@
+---
+name: Avatar 头像
+menu: 数据展示
+---
+
+import CodeBox from '../plugin/codeBox';
+
+import Coral from 'sui-icons/lib/coral';
+
+import GeekLogo from 'sui-icons/lib/geekLogo';
+import GeekText from 'sui-icons/lib/geekText';
+
+import Head from 'sui-icons/lib/head';
+
+import RobotText from 'sui-icons/lib/robotText';
+
+import RocketLogo from 'sui-icons/lib/rocketLogo';
+import RocketText from 'sui-icons/lib/rocketText';
+import RocketMarkText from 'sui-icons/lib/rocketMarkText';
+
+import SkyNetLogo from 'sui-icons/lib/skyNetLogo';
+import SkyNetText from 'sui-icons/lib/skyNetText';
+
+import SuiLogo from 'sui-icons/lib/sui';
+
+import { Logo } from 'sui-components';
+
+### 安装
+
+```sh
+yarn add sui-icons -D
+```
+
+### 使用
+
+```js
+import SuiLogo from 'sui-icons/lib/sui';
+```
+
+<CodeBox
+  title="图标"
+  demo={[
+    {
+      component: <Logo img={SuiLogo} text="SUI-指南" url="/" />,
+      code: `import { Logo } from 'sui-components';
+import SuiLogo from 'sui-icons/lib/sui';
+ReactDOM.render(<Logo img={SuiLogo} text="SUI-指南" url="/" />, document.getElementById('app'));`
+    }
+  ]}
+/>
+
+### 图标列表
+
+<ul class="icons-list">
+  <li><Coral /></li>
+  <li><GeekLogo /></li>
+  <li><GeekText /></li>
+  <li><Head /></li>
+  <li><RobotText /></li>
+  <li><RocketLogo /></li>
+  <li><RocketText /></li>
+  <li><RocketMarkText /></li>
+  <li><SkyNetLogo /></li>
+  <li><SkyNetText /></li>
+  <li><SuiLogo /></li>
+</ul>
+

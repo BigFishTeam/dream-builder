@@ -1,0 +1,124 @@
+---
+name: WaitCheck 待审
+menu: 数据展示
+---
+
+import WaitCheck from '../../core/components/waitCheck';
+import CodeBox from '../plugin/codeBox';
+
+## WaitCheck 待审
+
+```js
+import { WaitCheck } from 'sui-components';
+```
+
+### 何时使用
+
+- 审核场景下需要展示待审数据时
+
+### 使用方法
+
+<CodeBox
+  title="待审"
+  demo={[
+    {
+      component: (
+        <WaitCheck
+          waitNum={12000}
+          unCheckNum={12}
+          disabled={false}
+          showNoData={true}
+          loading={false}
+          onStartCheck={() => {}}
+        />
+      ),
+      code: `import { WaitCheck } from 'sui-components';
+<WaitCheck
+  waitNum={12000}
+  unCheckNum={12}
+  disabled={false}
+  showNoData={true}
+  loading={false}
+  onStartCheck={() => {}}
+/>`
+    }
+  ]}
+  api={[
+    {
+      title: '',
+      data: [
+        {
+          key: '1',
+          params: 'waitNum',
+          des: '待审量',
+          type: 'number',
+          default: '0'
+        },
+        {
+          key: '2',
+          params: 'loading',
+          des: '是否展示loading态',
+          type: 'bool',
+          default: 'false'
+        },
+        {
+          key: '3',
+          params: 'disabled',
+          des: '按钮是否可用',
+          type: 'bool',
+          default: 'false'
+        },
+        {
+          key: '4',
+          params: 'showNoData',
+          des: "是否展示'暂无字段'",
+          type: 'bool',
+          default: 'false'
+        },
+        {
+          key: '5',
+          params: 'waitNumLabel',
+          des: '待审量字段的文本',
+          type: 'string',
+          default: '-'
+        },
+        {
+          key: '6',
+          params: 'unCheckNum',
+          des:
+            '已拉取未审核量（前次操作拉取的数据未审核并且因为意外或者人为因素尚未回库的数据量）',
+          type: 'number',
+          default: '-'
+        },
+        {
+          key: '7',
+          params: 'unCheckNumLabel',
+          des: '已拉取未审核的文本',
+          type: 'string',
+          default: '-'
+        },
+        {
+          key: '8',
+          params: 'startCheckLabel',
+          des: '开始审核按钮的文本',
+          type: 'string',
+          default: '-'
+        },
+        {
+          key: '9',
+          params: 'onStartCheck',
+          des: '开始审核的回调函数',
+          type: 'func',
+          default: '-'
+        },
+        {
+          key: '10',
+          params: 'noDataLabel',
+          des: '暂无字段的文案',
+          type: 'string',
+          default: '-'
+        }
+      ]
+    }
+  ]}
+/>

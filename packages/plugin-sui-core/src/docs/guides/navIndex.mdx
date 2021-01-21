@@ -1,0 +1,388 @@
+---
+name: 路由和菜单
+menu: 导航
+---
+
+import Menu from '../../core/components/menu';
+
+## 路由和菜单
+路由和菜单是组织起一个应用的关键骨架，sui中的路由为了方便管理，使用了中心化的方式，统一配置和管理。
+
+## 基本结构
+### 菜单配置文件 menu.config.js
+- 用于配置左侧菜单，书写示例（包含带标签组tagname和不带两种方式）：
+<br/><br/>
+
+```js
+// menu.config.js
+import React from 'react';
+import { Icon } from 'antd';
+
+// 带tagname的配置
+export default {
+  defaultSelectedKey: '/base/styleComponents', // 默认选中菜单
+  data: [
+    {
+      path: '/base',
+      icon: <Icon type="appstore" />, // 传入antd Icon组件
+      name: '组件',
+      routes: [
+        {
+          tagname: '基础',
+          routes: [
+            {
+              path: '/base/styleComponents',
+              name: '样式类组件'
+            },
+            {
+              path: '/base/table',
+              name: '表格'
+            },
+            {
+              path: '/base/caption',
+              name: '模块标题'
+            },
+            {
+              path: '/base/form',
+              name: '表单'
+            },
+            {
+              path: '/base/waitCheck',
+              name: '待审量'
+            },
+            {
+              path: '/base/videoPlayer',
+              name: '点播播放器'
+            },
+            {
+              path: '/base/httpError',
+              name: '异常页面'
+            }
+          ]
+        }
+      ]
+    },
+    {
+      path: '/business',
+      name: '业务',
+      icon: <Icon type="layout" />,
+      routes: [
+        {
+          tagname: '多级路由',
+          routes: [
+            {
+              path: '/business/articleList',
+              name: '文章列表'
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};
+
+// 不带tagname的配置
+
+export default {
+  defaultSelectedKey: '/base/styleComponents', // 默认选中菜单
+  data: [
+    {
+      path: '/base',
+      icon: <Icon type="appstore" />, // 传入antd Icon组件
+      name: '组件',
+      routes: [
+        {
+            path: '/base/styleComponents',
+            name: '样式类组件'
+        },
+        {
+            path: '/base/table',
+            name: '表格'
+        },
+        {
+            path: '/base/caption',
+            name: '模块标题'
+        },
+        {
+            path: '/base/form',
+            name: '表单'
+        },
+        {
+            path: '/base/waitCheck',
+            name: '待审量'
+        },
+        {
+            path: '/base/videoPlayer',
+            name: '点播播放器'
+        },
+        {
+            path: '/base/httpError',
+            name: '异常页面'
+        }
+      ]
+    },
+    {
+        path: '/business',
+        name: '业务',
+        icon: <Icon type="layout" />,
+        routes: [
+            {
+                path: '/business/articleList',
+                name: '文章列表'
+            }
+        ]
+    }
+  ]
+};
+
+```
+- defaultSelectedKey：默认选中菜单路由，其父菜单会默认打开
+- data：包含所有菜单对象的数组，path为路由url，name为菜单名称，图标通过icon定义，父子菜单通过routes关联，tagname为二级菜单标签组
+- 注：tagname在需要时传入，也可不传，方式为：去掉tagname这一层，直接指定tagname上一层的routes为其下一层
+
+### 路由配置文件 routerPage.config.js
+- 用于配置页面，规定路由与页面的映射关系，书写示例：
+<br/><br/>
+
+```js
+// routerPage.config.js
+
+// 引入菜单配置
+import menuConfig from './menu.config';
+
+// 引入页面组件
+import Test from '@/pages/test';
+import StyleComponents from '@/pages/base/styleComponents';
+import Table from '@/pages/base/table';
+import Caption from '@/pages/base/caption';
+import Form from '@/pages/base/sodaForm';
+import WaitCheck from '@/pages/base/waitCheck';
+import VideoPlayer from '@/pages/base/videoPlayer';
+import HttpError from '@/pages/base/httpError';
+import ArticleList from '@/pages/business/multiLevelRoute/articleList';
+import Article from '@/pages/business/multiLevelRoute/article';
+
+export default {
+  defaultSelectedKey: menuConfig.defaultSelectedKey, // 默认选中菜单
+  data: [
+    {
+      path: '/base',
+      name: '组件',
+      routes: [
+        {
+          path: '/base/styleComponents',
+          name: '样式类组件',
+          component: StyleComponents,
+          pageWrapper: 'Content', // 页面容器类型，目前只支持Content与NarrowContent两种，不传时默认为NarrowContent类型
+          title: '自定义样式类组件', // 自定义页面标题，不传时默认为name
+          titleStyle: {     // 自定义标题样式
+            marginLeft: '20px',
+            marginTop: '20px'
+          },
+        },
+        {
+          path: '/base/table',
+          name: '表格',
+          component: Table
+        },
+        {
+          path: '/base/caption',
+          name: '模块标题',
+          component: Caption
+        },
+        {
+          path: '/base/form',
+          name: '表单',
+          component: Form
+        },
+        {
+          path: '/base/waitCheck',
+          name: '待审量',
+          component: WaitCheck
+        },
+        {
+          path: '/base/videoPlayer',
+          name: '点播播放器',
+          component: VideoPlayer
+        },
+        {
+          path: '/base/httpError',
+          name: '异常页面',
+          component: HttpError
+        }
+      ]
+    },
+    {
+      path: '/plugin',
+      name: '插件',
+      routes: [
+        {
+          path: '/videoDemand/ch16',
+          name: '火锅视频复审',
+          component: Test
+        },
+        {
+          path: '/videoDemand/ch18',
+          name: '操作日志查询',
+          component: Test
+        }
+      ]
+    },
+    {
+      path: '/business',
+      name: '业务',
+      routes: [
+        {
+          path: '/business/articleList', // 文章列表页
+          name: '文章列表',
+          hideTitle: true,  // 隐藏页面标题
+          component: ArticleList
+        },
+        {
+          path: '/business/article/:articleId', // 文章详情页
+          name: '文章详情',
+          component: Article,
+          breadCrumbs: [
+            // 二级（及以上）页面推荐配置面包屑，为其父页面对象集合
+            {
+              path: '/business/articleList',
+              name: '文章列表'
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};
+
+```
+- 与menu配置的区别：配置方式与menu.config.js类似，不同点在于页面对应的路由往往是带可变参数的正则表达式（如：/business/article/:articleId），而菜单是参数确定的url
+- 可选配置参数：
+  - pageWrapper：页面布局容器，目前只支持宽内容区域Content与窄内容区域NarrowContent两种，不传时默认为NarrowContent
+  - title: 自定义页面标题，默认为name的值
+  - hideTitle: 隐藏页面标题，默认为false
+  - titleStyle: 自定义页面标题样式
+  - breadCrumbs: 面包屑配置
+- 深层级、动态生成页面配置：菜单只定义左侧可见的目录，更深级别的页面可在routerPage.config.js中配置，如：文章详情页面
+- 支持子组件页面自行渲染：包含component属性的页面若存在子页面routes，对应父组件的this.props.routerConfig会接受到其子组件路由信息，业务方自行使用RouterPage组件渲染其子组件:
+<br/><br/>
+
+```js
+import { RouterPage } from 'sui-components';
+
+export default class FatherComp extends Component {
+  render() {
+    return (
+      <div className="article-wrapper">
+        <div>父组件页面内容</div>
+        /* 使用RouterPage组件渲染子路由页面, isRoot传false */
+        <RouterPage routeData={this.props.routerConfig} isRoot={false} /> 
+      </div>
+    );
+  }
+}
+```
+- 支持自动生成面包屑（推荐为二级及以上级别的页面生成）：通过breadCrumbs字段配置，传入其父页面对象集合即可
+- 可配置的页面头部：目前支持页面标题（默认为name，通过title自定义）、面包屑（由breadCrumbs配置）或无头部信息（hideTitle设为true）三种形式:
+<br/><br/>
+
+```js
+{
+      path: '/business',
+      name: '业务',
+      routes: [
+        {
+          path: '/business/articleList', // 文章列表页
+          name: '文章列表',
+          title: '自定义文章列表', // 标题默认为name，通过title自定义
+          hideTitle: true,   // 设置为true时，不展示页面标题
+          titleStyle: {     // 自定义标题样式
+            marginLeft: '20px',
+            marginTop: '20px'
+          },
+          component: ArticleList
+        },
+        {
+          path: '/business/article/:articleId', // 文章详情页
+          name: '文章详情',
+          component: Article,
+          breadCrumbs: [
+            // 二级（及以上）页面推荐配置面包屑，为其父页面对象集合
+            {
+              path: '/business/articleList',
+              name: '文章列表'
+            }
+          ]
+        }
+      ]
+    }
+```
+
+## 如何使用
+上面对路由与菜单的配置的实现进行了概要介绍，接下来该如何使用呢？
+
+- 在应用主页面app.js里引入menu和页面两个配置文件，传入Menu、RouterPage组件进行渲染
+<br/><br/>
+
+```js
+import React, { Component } from 'react';
+
+import {
+  Wrapper,
+  Logo,
+  Menu,
+  RouterPage,
+  Avatar
+} from 'sui-components';
+
+// logo图片和文字
+import logoImg from 'sui-icons/lib/geekLogo';
+import logoText from 'sui-icons/lib/geekText';
+
+// menu配置
+import menuRoutes from '@/menu.config';
+
+// 页面配置
+import pageRoutes from '@/routerPage.config';
+
+const { PageWrapper, LeftWrapper, RightWrapper, Header } = Wrapper;
+
+//个人中心参数使用参考
+let avatarOptions = {
+  account: 'Zenli',
+  optionLinks: [
+    { iconName: 'setting', link: 'xxx.qq.com/user', linkName: '个人中心' }
+  ],
+  loginOutCallBack: () => {
+    alert('点击了登出按钮');
+  }
+};
+
+
+class App extends Component {
+  
+  render() {
+    return (
+      <PageWrapper>
+        <LeftWrapper defaultCollapsed={true}>
+          <Logo img={logoImg} text={logoText} />
+          <Menu
+            menuData={menuRoutes.data}
+            defaultSelectedKey={menuRoutes.defaultSelectedKey}
+          />
+        </LeftWrapper>
+        <RightWrapper adaptable>
+          <Header>
+            <Avatar {...avatarOptions} />
+          </Header>
+          <RouterPage routeData={pageRoutes}/>
+        </RightWrapper>
+      </PageWrapper>
+    );
+  }
+}
+
+export default App;
+
+```
+

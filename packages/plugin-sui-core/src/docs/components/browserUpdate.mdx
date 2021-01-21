@@ -1,0 +1,43 @@
+---
+name: BrowserUpdate 浏览器检测
+menu: 通用
+---
+
+import BrowserUpdate from '../../core/components/browserUpdate';
+import CodeBox from '../plugin/codeBox';
+
+## BrowserUpdate 浏览器检测
+
+```js
+import { BrowserUpdate } from 'sui-components';
+```
+### 何时使用
+
+- 需要检测chrome浏览器版本时，低于最低版本组件会进行提示
+
+### 使用方法
+
+<CodeBox
+  title="浏览器检测"
+  demo={[
+    {
+      component: <BrowserUpdate />,
+      code: `import { BrowserUpdate } from 'sui-components';
+ReactDOM.render(<BrowserUpdate/>, document.getElementById('app'));`
+    }
+  ]}
+  api={[
+    {
+      title: '',
+      data: [
+        {
+          key: '1',
+          params: 'version',
+          des: 'chrome浏览器最低版本',
+          type: 'number',
+          default: '60'
+        }
+      ]
+    }
+  ]}
+/>

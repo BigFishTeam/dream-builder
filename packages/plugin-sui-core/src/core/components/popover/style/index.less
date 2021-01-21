@@ -1,0 +1,28 @@
+/**
+ * @file index.less
+ * @date 2019-02-26 15.17.09
+ */
+
+@import './../../../themes/variables.less';
+
+@popover: ~'@{sui-prefix}-popover';
+.@{popover} {
+  font-size: 16px;
+  margin-bottom: 20px;
+  & > span {
+    vertical-align: middle;
+  }
+  .text {
+    font-size: 14px;
+    padding-left: 8px;
+    margin-right: 8px;
+  }
+  //icon颜色重置
+  .anticon {
+    color: @icon-default-color;
+  }
+  .popover-icon,
+  .text {
+    vertical-align: middle;
+  }
+}

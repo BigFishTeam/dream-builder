@@ -1,0 +1,727 @@
+---
+name: SodaForm 表单
+menu: 数据录入
+---
+
+import SodaForm from '../../core/components/sodaForm';
+import CodeBox from '../plugin/codeBox';
+import {Button, Select, Radio} from 'antd';
+
+## SodaForm 表单
+
+```js
+import { SodaForm } from 'sui-components';
+```
+
+### 何时使用
+
+- 表单较为复杂，需要可配置化表单时
+
+### 使用方法
+
+<CodeBox
+  title="表单"
+  demo={[
+    {
+      component: (
+        <SodaForm
+          layout="inline"
+          resetBtn
+          submitBtnText="查询"
+          extraOperator={<Button type="danger">后退</Button>}
+          config={[
+            {
+              type: 'input',
+              prop: 'id',
+              label: '输入',
+              required: true,
+              tip: '我是提示',
+              payload: {
+                props: {
+                  placeholder: '请输入',
+                }
+              }
+            },
+            {
+              type: 'date',
+              prop: 'mothons',
+              label: '月范围选择',
+              required: true,
+              payload: {
+                dateType: 'rangeMonth',
+                props: {
+                  format: "YYYY/MM"
+                }
+              }
+            },
+            {
+              span: 12,
+              type: 'cascader',
+              prop: 'city',
+              label: '级联',
+              payload: {
+                props: {
+                  options:[
+                    {
+                      value: 'zhejiang',
+                      label: 'Zhejiang',
+                      children: [
+                        {
+                          value: 'hangzhou',
+                          label: 'Hangzhou',
+                          children: [
+                            {
+                              value: 'xihu',
+                              label: 'West Lake',
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                    {
+                      value: 'jiangsu',
+                      label: 'Jiangsu',
+                      children: [
+                        {
+                          value: 'nanjing',
+                          label: 'Nanjing',
+                          children: [
+                            {
+                              value: 'zhonghuamen',
+                              label: 'Zhong Hua Men',
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                  ]
+                }
+              }
+            },
+            {
+              span: 6,
+              type: 'input',
+              prop: 'name',
+              label: '默认值',
+              initialValue: '我是默认值',
+              payload: {
+                props: {
+                  placeholder: '请输入'
+                }
+              }
+            },
+            {
+              type: 'select',
+              prop: 'select',
+              label: '选择框',
+              initialValue: 0,
+              payload: {
+                list: [
+                  { label: '待审核', value: 0 },
+                  { label: '审核通过', value: 1 },
+                  { label: '审核不通过', value: 2 }
+                ],
+                props: {
+                  placeholder: '请选择',
+                }
+              }
+            },
+            {
+              type: 'select',
+              prop: 'select2',
+              label: '自定义选择框',
+              initialValue: 0,
+              payload: {
+                list: [
+                  { label: '待审核', value: 0 },
+                  { label: '审核通过', value: 1 },
+                  { label: '审核不通过', value: 2 }
+                ].map((item, index) => (
+                  <Select.Option key={`options-${index}`} value={item.value}>
+                    {item.label}
+                  </Select.Option>
+                )),
+                props: {
+                  placeholder: '请选择',
+                }
+              }
+            },
+            {
+              type: 'date',
+              prop: 'date',
+              label: '时间',
+              payload: {
+                dateType: 'range'
+              }
+            },
+            {
+              type: 'radio',
+              prop: 'radio',
+              label: '单选框',
+              required: true,
+              initialValue: 2,
+              payload: {
+                group: true,
+                props: {
+                  options: [
+                    {
+                      label: 'G级(全年龄段)',
+                      value: 1
+                    },
+                    {
+                      label: 'PG(>12周岁)',
+                      value: 2
+                    },
+                    {
+                      label: 'PG-18(>18周岁)',
+                      value: 3
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              type: 'radio',
+              prop: 'radio2',
+              label: '自定义单选框',
+              initialValue: 2,
+              payload: {
+                group: true,
+                list: [
+                    {
+                      label: '额外1',
+                      value: 1
+                    },
+                    {
+                      label: '额外2',
+                      value: 2
+                    },
+                    {
+                      label: '额外3',
+                      value: 3
+                    }
+                  ].map((item, index) => <Radio key={`radio-${index}}`} value={item.value}>{item.label}</Radio>)
+              }
+            },
+            {
+              type: 'checkbox',
+              prop: 'checkbox',
+              label: '复选框',
+              required: true,
+              initialValue: [2],
+              payload: {
+                group: true,
+                props: {
+                  options: [
+                    {
+                      label: 'G级(全年龄段)',
+                      value: 1
+                    },
+                    {
+                      label: 'PG(>12周岁)',
+                      value: 2
+                    },
+                    {
+                      label: 'PG-18(>18周岁)',
+                      value: 3
+                    }
+                  ]
+                }
+              }
+            }
+          ]}
+          onSubmit={values => alert(JSON.stringify(values))}
+        >
+        </SodaForm>
+      ),
+      code: `import { SodaForm } from 'sui-components';
+<SodaForm
+    layout="inline"
+    resetBtn
+    submitBtnText="查询"
+    extraOperator={<Button>button</Button>}
+    config={[
+      {
+        type: 'input',
+        prop: 'id',
+        label: '输入',
+        required: true,
+        tip: '我是提示',
+        payload: {
+          props: {
+            placeholder: '请输入',
+          }
+        }
+      },
+      {
+        type: 'date',
+        prop: 'mothons',
+        label: '月范围选择',
+        required: true,
+        payload: {
+          dateType: 'rangeMonth',
+          props: {
+            format: "YYYY/MM"
+          }
+        }
+      },
+      {
+        span: 12,
+        type: 'cascader',
+        prop: 'city',
+        label: '级联',
+        required: true,
+        payload: {
+          props: {
+            options:[
+              {
+                value: 'zhejiang',
+                label: 'Zhejiang',
+                children: [
+                  {
+                    value: 'hangzhou',
+                    label: 'Hangzhou',
+                    children: [
+                      {
+                        value: 'xihu',
+                        label: 'West Lake',
+                      },
+                    ],
+                  },
+                ],
+              },
+              {
+                value: 'jiangsu',
+                label: 'Jiangsu',
+                children: [
+                  {
+                    value: 'nanjing',
+                    label: 'Nanjing',
+                    children: [
+                      {
+                        value: 'zhonghuamen',
+                        label: 'Zhong Hua Men',
+                      },
+                    ],
+                  },
+                ],
+              },
+            ]
+          }
+        }
+      },
+      {
+        span: 6,
+        type: 'input',
+        prop: 'name',
+        label: '默认值',
+        initialValue: '我是默认值',
+        payload: {
+          props: {
+            placeholder: '请输入'
+          }
+        }
+      },
+      {
+        type: 'select',
+        prop: 'select',
+        label: '选择框',
+        initialValue: 0,
+        payload: {
+          list: [
+            { label: '待审核', value: 0 },
+            { label: '审核通过', value: 1 },
+            { label: '审核不通过', value: 2 }
+          ],
+          props: {
+            placeholder: '请选择',
+            style: {
+              width: '200px'
+            }
+          }
+        }
+      },
+      {
+        type: 'select',
+        prop: 'select2',
+        label: '自定义选择框',
+        initialValue: 0,
+        payload: {
+          list: [
+            { label: '待审核', value: 0 },
+            { label: '审核通过', value: 1 },
+            { label: '审核不通过', value: 2 }
+          ].map((item, index) => (
+            <Select.Option key={'options-' + index} value={item.value}>
+              {item.label}
+            </Select.Option>
+          )),
+          props: {
+            placeholder: '请选择',
+          }
+        }
+      },
+      {
+        type: 'date',
+        prop: 'date',
+        label: '时间',
+        payload: {
+          dateType: 'range'
+        }
+      },
+      {
+        type: 'radio',
+        prop: 'radio',
+        label: '单选框',
+        required: true,
+        initialValue: 2,
+        payload: {
+          group: true,
+          props: {
+            options: [
+              {
+                label: 'G级(全年龄段)',
+                value: 1
+              },
+              {
+                label: 'PG(>12周岁)',
+                value: 2
+              },
+              {
+                label: 'PG-18(>18周岁)',
+                value: 3
+              }
+            ]
+          }
+        }
+      },
+      {
+        type: 'radio',
+        prop: 'radio2',
+        label: '自定义单选框',
+        initialValue: 2,
+        payload: {
+          group: true,
+          list: [
+              {
+                label: '额外1',
+                value: 1
+              },
+              {
+                label: '额外2',
+                value: 2
+              },
+              {
+                label: '额外3',
+                value: 3
+              }
+            ].map(item => <Radio value={item.value}>{item.label}</Radio>)
+        }
+      },
+      {
+        type: 'checkbox',
+        prop: 'checkbox',
+        label: '复选框',
+        required: true,
+        payload: {
+          group: true,
+          props: {
+            options: [
+              {
+                label: 'G级(全年龄段)',
+                value: 1
+              },
+              {
+                label: 'PG(>12周岁)',
+                value: 2
+              },
+              {
+                label: 'PG-18(>18周岁)',
+                value: 3
+              }
+            ]
+          }
+        }
+      }
+    ]}
+    onSubmit={values => alert(JSON.stringify(values))}
+  />`
+    }
+  ]}
+  api={[
+    {
+      title: 'Form Params',
+      data: [
+        {
+          key: '1',
+          params: 'className',
+          des: '自定义 class	',
+          type: 'string',
+          default: "''"
+        },
+        {
+          key: '2',
+          params: 'layout',
+          des: '布局',
+          type: "'horizontal'|'inline'",
+          default: "'horizontal'"
+        },
+        {
+          key: '3',
+          params: 'disabled',
+          des: '禁用',
+          type: 'boolean',
+          default: 'false'
+        },
+        {
+          key: '4',
+          params: 'config',
+          des: '配置项',
+          type: 'array',
+          default: '[]'
+        },
+        {
+          key: '5',
+          params: 'labelWidth',
+          des: '标签宽度',
+          type: 'number',
+          default: '80'
+        },
+        {
+          key: '6',
+          params: 'operatorBtns',
+          des: '操作按钮',
+          type: 'boolean',
+          default: 'true'
+        },
+        {
+          key: '7',
+          params: 'btnSpan',
+          des: '操作按钮 span',
+          type: 'number',
+          default: '6'
+        },
+        {
+          key: 'btnDisabled',
+          params: 'btnDisabled',
+          des: '操作按钮禁用',
+          type: 'boolean',
+          default: 'false'
+        },
+        {
+          key: 'btnLoading',
+          params: 'btnLoading',
+          des: '操作按钮loading',
+          type: 'boolean',
+          default: 'false'
+        },
+        {
+          key: '8',
+          params: 'submitBtnText',
+          des: '提交按钮文案',
+          type: 'string',
+          default: '提交'
+        },
+        {
+          key: '9',
+          params: 'resetBtn',
+          des: '重置按钮',
+          type: 'boolean',
+          default: 'false'
+        },
+        {
+          key: '10',
+          params: 'resetBtnText',
+          des: '重置按钮文案',
+          type: 'string',
+          default: '重置'
+        },
+        {
+          key: '11',
+          params: 'formLayout',
+          des: '表单布局',
+          type: 'object',
+          default: 'null'
+        },
+        {
+          key: '12',
+          params: 'onSubmit',
+          des: '提交事件',
+          type: 'function',
+          default: '() => {}'
+        },
+        {
+          key: '13',
+          params: 'onReset',
+          des: '重置事件',
+          type: 'function',
+          default: '() => {}'
+        },
+        {
+          key: '14',
+          params: 'onChange',
+          des: '表单值变化事件',
+          type: 'function',
+          default: '() => {}'
+        },
+        {
+          key: '15',
+          params: 'wrappedComponentRef',
+          des: 'form ref',
+          type: 'function',
+          default: '() => {}'
+        }
+      ]
+    },
+    {
+      title: 'Config Params',
+      data: [
+        {
+          key: '1',
+          params: 'type',
+          des: '表单类型',
+          type: "'input'|'select'| 'date'|'checkbox'|'radio'|'upload'",
+          default: "''"
+        },
+        {
+          key: '2',
+          params: 'label',
+          des: '标签',
+          type: 'string',
+          default: "''"
+        },
+        {
+          key: '3',
+          params: 'span',
+          des: '宽度',
+          type: 'number',
+          default: '24'
+        },
+        {
+          key: '4',
+          params: 'prop',
+          des: '属性名',
+          type: 'object',
+          default: 'null'
+        },
+        {
+          key: '5',
+          params: 'required',
+          des: '是否必填',
+          type: 'boolean',
+          default: 'false'
+        },
+        {
+          key: '6',
+          params: 'initialValue',
+          des: '默认值',
+          type: 'any',
+          default: 'null'
+        },
+        {
+          key: '7',
+          params: 'help',
+          des: '提示语',
+          type: 'string',
+          default: 'null'
+        },
+        {
+          key: '8',
+          params: 'message',
+          des: '校检失败文案',
+          type: 'string',
+          default: ''
+        },
+        {
+          key: '9',
+          params: 'payload',
+          des: '表单负荷',
+          type: 'object',
+          default: '{ props: {} }'
+        },
+        {
+          key: '10',
+          params: 'className',
+          des: '自定义类名',
+          type: 'string',
+          default: ''
+        },
+        {
+          key: '11',
+          params: 'formLayout',
+          des: '表单布局',
+          type: 'object',
+          default: 'null'
+        },
+        {
+          key: '12',
+          params: 'render',
+          des: '自定义组件',
+          type: 'function',
+          default: 'null'
+        },
+        {
+          key: '13',
+          params: 'disabled',
+          des: '是否禁用',
+          type: 'boolean',
+          default: 'false'
+        },
+        {
+          key: '14',
+          params: 'visible',
+          des: '是否可见',
+          type: 'boolean',
+          default: 'true'
+        }
+      ]
+    }
+  ]}
+/>
+
+<!-- ## API
+
+### Form Params
+
+| 参数                  | 说明           | 类型                    | 默认值         |
+| --------------------- | -------------- | ----------------------- | -------------- |
+| `className`           | 自定义 class   | `string`                | `''`           |
+| `layout`              | 布局           | `'horizontal'|'inline'` | `'horizontal'` |
+| `disabled`            | 禁用           | `boolean`               | `false`        |
+| `config`              | 配置项         | `array`                 | `[]`           |
+| `labelWidth`          | 标签宽度       | `number`                | `80`           |
+| `operatorBtns`        | 操作按钮       | `boolean`               | `true`         |
+| `btnSpan`             | 操作按钮 span  | `number`                | `6`            |
+| `submitBtnText`       | 提交按钮文案   | `string`                | `提交`         |
+| `resetBtn`            | 重置按钮       | `boolean`               | `false`        |
+| `resetBtnText`        | 重置按钮文案   | `string`                | `重置`         |
+| `formLayout`          | 表单布局       | `object`                | `null`         |
+| `onSubmit`            | 提交事件       | `function`              | `() => {}`     |
+| `onReset`             | 重置事件       | `function`              | `() => {}`     |
+| `onChange`            | 表单值变化事件 | `function`              | `() => {}`     |
+| `wrappedComponentRef` | form ref       | `function`              | `() => {}`     |
+
+### Config Params
+
+| 参数           | 说明         | 类型                                                   | 默认值          |
+| -------------- | ------------ | ------------------------------------------------------ | --------------- |
+| `type`         | 表单类型     | `'input'|'select'| 'date'|'checkbox'|'radio'|'upload'` | `''`            |
+| `label`        | 标签         | `string`                                               | `null`          |
+| `span`         | 宽度         | `number`                                               | `24`            |
+| `prop`         | 属性名       | `string`                                               | `null`          |
+| `required`     | 是否必填     | `boolean`                                              | `false`         |
+| `initialValue` | 默认值       | `any`                                                  | `null`          |
+| `help`         | 提示语       | `string`                                               | `null`          |
+| `message`      | 校检失败文案 | `string`                                               | `null`          |
+| `payload`      | 表单负荷     | `object`                                               | `{ props: {} }` |
+| `className`    | 自定义类名   | `string`                                               | `null`          |
+| `render`       | 自定义组件   | `function`                                             | `null`          |
+| `disabled`     | 是否禁用     | `boolean`                                              | `false`         |
+| `visible`      | 是否可见     | `boolean`                                              | `true`          | -->
+
+### 说明
+
+- 我们可以使用`wrappedComponentRef` 或者 form 引用， 实例将会对外提供以下方法：
+  - `getFormInstance()`，获取 form 实例，方便调用 rc-form 对外提供的方法
+  - `submitHandle()`, 手动触发提交操作，会进行校检逻辑，该方法返回 `Promise` ，方便外部对多表单进行同时校检，譬如使用`Promise.all()`
+  - `resetHandle()`, 重置操作

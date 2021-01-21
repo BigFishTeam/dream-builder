@@ -1,0 +1,144 @@
+---
+name: ReviewInfoTab 审核信息展示组件
+menu: 导航
+---
+
+import ReviewInfoTab from '../../core/components/reviewInfoTab';
+import ReviewImgGroup from '../../core/components/reviewImgGroup';
+import CodeBox from '../plugin/codeBox';
+
+## ReviewInfoTab 审核信息展示组件
+```js
+import ReviewInfoTab from 'sui-components';
+```
+
+### 何时使用
+
+- 在审核时，需要展示视频的一些信息和标签时
+
+
+### 使用方法
+
+<CodeBox title={"与审核图片组结合使用"}
+  demo={[{
+    title:'与审核图片组结合使用',
+    component:<ReviewInfoTab title="审核信息查看组件" infos={[{
+      keyword: '123',
+      value: '123'
+    }, {
+      type: 'edit',
+      keyword: '可编辑',
+      tags: ['1', '2'],
+      onClick: (e, selectedTags, tags) => {console.log(e, selectedTags, tags)}
+    }]}>
+      <ReviewImgGroup imgWidth={100} 
+                                     imgHeight={100} 
+                                     col={4}
+                                     imgs={[{
+                                        url: 'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg',
+                                        burl: 'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg',
+                                        footerInfo: '封面图',
+                                        events: {
+                                          hover: 'bigImg'
+                                        }
+                                      }, {
+                                        url: 'https://gw.alipayobjects.com/zos/rmsportal/tXlLQhLvkEelMstLyHiN.svg',
+                                        sidePageUrl: 'http://www.baidu.com',
+                                        events: {
+                                          dbclick: 'bigImg'
+                                        }
+                                      }, {url: 'https://gw.alipayobjects.com/zos/rmsportal/tXlLQhLvkEelMstLyHiN.svg'},
+                                      {url: 'https://gw.alipayobjects.com/zos/rmsportal/tXlLQhLvkEelMstLyHiN.svg'},
+                                      {url: 'https://gw.alipayobjects.com/zos/rmsportal/tXlLQhLvkEelMstLyHiN.svg'},
+                                      {url: 'https://gw.alipayobjects.com/zos/rmsportal/tXlLQhLvkEelMstLyHiN.svg'}]}/>
+    </ReviewInfoTab>,
+    code:`import ReviewInfoTab from 'sui-components';
+export default () => (
+   <ReviewInfoTab title="审核信息查看组件" infos={[{
+         keyword: '123',
+         value: '123'
+       }, {
+         type: 'edit',
+         keyword: '可编辑',
+         tags: ['1', '2'],
+         onClick: (e, selectedTags, tags) => {console.log(e, selectedTags, tags)}
+       }]}>
+       <ReviewImgGroup imgWidth={100} 
+                       imgHeight={100} 
+                       col={4}
+                       imgs={[{
+                          url: 'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg',
+                          burl: 'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg',
+                          footerInfo: '封面图',
+                          events: {
+                            hover: 'bigImg'
+                          }
+                        }, {
+                          url: 'https://gw.alipayobjects.com/zos/rmsportal/tXlLQhLvkEelMstLyHiN.svg',
+                          sidePageUrl: 'http://www.baidu.com',
+                          events: {
+                            dbclick: 'bigImg'
+                          }
+                        }, {url: 'https://gw.alipayobjects.com/zos/rmsportal/tXlLQhLvkEelMstLyHiN.svg'},
+                        {url: 'https://gw.alipayobjects.com/zos/rmsportal/tXlLQhLvkEelMstLyHiN.svg'},
+                        {url: 'https://gw.alipayobjects.com/zos/rmsportal/tXlLQhLvkEelMstLyHiN.svg'},
+                        {url: 'https://gw.alipayobjects.com/zos/rmsportal/tXlLQhLvkEelMstLyHiN.svg'}]}/>
+</ReviewInfoTab>
+)`}]}
+api={[{
+        title: '',
+        data: [
+      {
+        key: '1',
+        params: 'title',
+        des: '当前Tab显示的名称',
+        type: 'string',
+        default: 'null'
+      },
+      {
+        key: '2',
+        params: 'infos',
+        des:'当前tab的数据来源',
+        type: 'array[]',
+        default: "[]"
+      }
+    ]
+    }, {
+      title: 'infos',
+      data: [{
+        key: '1',
+        params: 'type',
+        des: '当前Tag的种类，可以选择edit作为可编辑tag，可以选择block作为占位tag，每行展示3个tag',
+        type: 'string | null',
+        default: 'null'
+      },
+       {
+         key: '2',
+         params: 'keyword',
+         des: '当前Tag的key',
+         type: 'string',
+         default: 'null'
+      },
+      {
+        key: '3',
+        params: 'value',
+        des: '当前tag的value，当tag的type为edit时使用tags',
+        type: 'string',
+        default: 'null'
+      },      
+      {
+        key: '4',
+        params: 'tags',
+        des: '当前tag的可编辑tags',
+        type: 'string',
+        default: 'null'
+      }, 
+      {
+        key: '5',
+        params: 'onClick',
+        des: '当tag的type为edit时，edit图标被点击时的回调，selectedTags为被选中的tag，tags是所有传入的tag',
+        type: 'function (e, selectedTags, tags) {}',
+        default: 'null'
+      }]
+    }]}
+    />

@@ -1,0 +1,22 @@
+@import './../../../themes/variables.less';
+
+.sui-left-wrapper {
+  position: relative;
+  margin: 0px 16px 10px 36px;
+  width: @sui-left-wrapper-width;
+  transition: margin 0.4s ease 0.2s, width 0.2s;
+
+  &-collapsed {
+    width: 30px;
+    margin-left: 24px !important;
+  }
+
+  &-collapsedScroll {
+    height: calc(100% - 10px);
+  }
+
+  //icon颜色重置
+  .anticon {
+    color: @icon-default-color;
+  }
+}

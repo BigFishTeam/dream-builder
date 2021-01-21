@@ -1,0 +1,50 @@
+/**
+ * @file style.less
+ * @date 2018-11-07 11.05.34
+ */
+
+.soda-form {
+  display: inline-block;
+  width: 100%;
+  padding: 0 10px 0 0;
+
+  .ant-form-item {
+    &-label {
+      font-weight: bold;
+      label {
+        color: #555;
+      }
+    }
+  }
+
+  &.ant-form-inline {
+    .ant-form-item {
+      margin-right: 16px;
+      margin-bottom: 10px;
+    }
+  }
+
+  &.ant-form-horizontal {
+    .ant-form-item {
+      display: flex;
+      overflow: hidden;
+      &-control-wrapper {
+        flex: 1;
+        font-size: 14px;
+        color: #333;
+      }
+    }
+  }
+
+  .soda-form-text {
+    .ant-form-item {
+      margin-bottom: 0;
+    }
+  }
+
+  .multiple-line {
+    line-height: 24px;
+    display: inline-block;
+    margin-top: 8px;
+  }
+}

@@ -1,0 +1,167 @@
+---
+name: Watermark 水印
+menu: 数据展示
+---
+
+import { Watermark, WatermarkImg } from '../../core/components/watermark';
+import { WATERMARK_DEFAULT_OPTIONS } from '../../core/components/watermark/generateWatermark';
+import CodeBox from '../plugin/codeBox';
+
+## Watermark 水印
+
+```js
+import { Watermark, WatermarkImg } from 'sui-components';
+```
+
+### 何时使用
+
+- 对用户做出此内容敏感涉密的警示
+- 对截图拍照类的文字内容泄露进行追踪
+- 对图片内容的泄露进行追踪
+
+### 使用方法
+
+<CodeBox
+  title="水印"
+  demo={[
+    {
+      title: '浮层水印',
+      component: (
+        <div>
+          <p>
+            Lorem ipsum dolor sit amet, at wisi dolores repudiandae qui, ne nec
+            eruditi mentitum rationibus. Eu vel impedit lucilius signiferumque,
+            no eum minim inimicus vituperatoribus. Te facer explicari consetetur
+            vim, eleifend expetenda tincidunt vel no. Zril regione placerat sit
+            in, wisi adipiscing usu ea.
+          </p>
+          <Watermark
+            text="我是水印"
+            font="20px"
+            fillStyle="rgba(0, 184, 184, 0.6)"
+            rotation={30}
+          />
+        </div>
+      ),
+      code: `import { Watermark } from 'sui-components';
+<p>
+    Lorem ipsum dolor sit amet, at wisi dolores repudiandae qui, ne nec eruditi
+    mentitum rationibus. Eu vel impedit lucilius signiferumque, no eum minim
+    inimicus vituperatoribus. Te facer explicari consetetur vim, eleifend
+    expetenda tincidunt vel no. Zril regione placerat sit in, wisi adipiscing
+    usu ea.
+</p>
+<Watermark
+  text="我是水印"
+  font="20px"
+  fillStyle="rgba(0, 184, 184, 0.6)"
+  rotation={30}
+/>`
+    },
+    {
+      title: '图片水印',
+      component: (
+        <WatermarkImg
+          watermarkOptions={{
+            rotation: 30
+          }}
+          src="https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=1322383906,3147119560&fm=173&app=49&f=JPEG?w=640&h=418&s=E37B30C48E0224D675A0019A03005098"
+          alt="tu"
+          style={{ width: '100%' }}
+        />
+      ),
+      code: `import { WatermarkImg } from 'sui-components';
+<WatermarkImg
+    watermarkOptions={{
+      rotation: 30
+    }}
+    src="https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=1322383906,3147119560&fm=173&app=49&f=JPEG?w=640&h=418&s=E37B30C48E0224D675A0019A03005098"
+    alt="tu"
+    style={{ width: '100%' }}
+/>`
+    }
+  ]}
+  api={[
+    {
+      title: 'Watermark',
+      data: [
+        {
+          key: '1',
+          params: 'text',
+          des: '水印文字',
+          type: 'string',
+          default: '请勿外传'
+        },
+        {
+          key: '2',
+          params: 'textAlign',
+          des: '文字对齐方式',
+          type: 'start | end | left | right | center ',
+          default: 'center'
+        },
+        {
+          key: '3',
+          params: 'textBaseline',
+          des: '文字基线样式',
+          type: 'top | hanging | middle | alphabetic | ideographic | bottom',
+          default: 'middle'
+        },
+        {
+          key: '4',
+          params: 'font',
+          des: '字体种类大小等',
+          type: 'string',
+          default: '20px microsoft yahei'
+        },
+        {
+          key: '5',
+          params: 'fillStyle',
+          des: '文字填充样式',
+          type: 'string',
+          default: 'rgba(184, 184, 184, 0.6)'
+        },
+        {
+          key: '6',
+          params: 'padding',
+          des: '边距',
+          type: 'number',
+          default: '20'
+        },
+        {
+          key: '7',
+          params: 'rotation',
+          des: '旋转角度',
+          type: 'number',
+          default: '30'
+        },
+        {
+          key: '8',
+          params: 'zIndex',
+          des: 'z-index',
+          type: 'number',
+          default: '-'
+        },
+        {
+          key: '5',
+          params: 'onOperated',
+          des: '人为操作DOM回调',
+          type: 'function',
+          default: '-'
+        }
+      ]
+    },
+    {
+      title: 'WatermarkImg',
+      data: [
+        {
+          key: '1',
+          params: 'watermarkOptions',
+          des: '水印参数',
+          type: 'object',
+          default:
+            "{ textAlign: 'center', textBaseline: 'middle', font: '20px microsoft yahei', fillStyle: 'rgba(184, 184, 184, 0.6)', text: '请勿外传', padding: 20, rotation: 30 }"
+        }
+      ]
+    }
+  ]}
+/>

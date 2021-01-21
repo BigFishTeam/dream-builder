@@ -1,0 +1,26 @@
+/*
+ * @Date: 2018-12-27 15:02:19 
+ * @Last Modified time: 2019-03-12 18:41:32
+ */
+
+@import './reset.less';
+@import './styleComponents.less';
+
+//sui的全局设置
+a:hover {
+  color: @primary-color;
+}
+
+//Form
+//复写 *（提醒符） 使用的字体，因为antd使用宋体不精致
+.ant-form-item-required:before {
+  font-family: Chinese Quote;
+  font-size: 20px;
+}
+
+//Table
+//复写table的tr hover样式
+
+.ant-table-tbody > tr:hover > td {
+  background: #e8e8e8 !important;
+}

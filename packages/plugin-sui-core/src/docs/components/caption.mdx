@@ -1,0 +1,57 @@
+---
+name: Caption 标题
+menu: 数据展示
+---
+
+import Caption from '../../core/components/caption';
+import CodeBox from '../plugin/codeBox';
+
+## Caption 标题
+
+```js
+import { Caption } from 'sui-components';
+```
+
+### 何时使用
+
+- 表格、表单等组件需要标题说明时
+
+### 使用方法
+
+<CodeBox
+  title="标题"
+  demo={[
+    {
+      component: (
+        <Caption
+          label="我是标题"
+          popover={{ placement: 'top', title: '说明', content: '待完善......' }}
+        />
+      ),
+      code: `import { Caption } from 'sui-components';
+<Caption label="我是标题" popover={{placement:'top',title: '说明', content: '待完善......'}} />`
+    }
+  ]}
+  api={[
+    {
+      title: '',
+      data: [
+        {
+          key: '1',
+          params: 'label',
+          des: '组件的标题',
+          type: 'string',
+          default: '‘查询结果’'
+        },
+        {
+          key: '2',
+          params: 'popover',
+          des:
+            '组件内名称的解释说明；支持popover的placement、title、content三个antd组件参数',
+          type: 'object',
+          default: '{}'
+        }
+      ]
+    }
+  ]}
+/>

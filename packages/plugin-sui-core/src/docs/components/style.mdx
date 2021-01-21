@@ -1,0 +1,41 @@
+
+import Caption from '../../core/components/caption';
+import CodeBox from '../plugin/codeBox';
+
+import { Button } from 'antd';
+
+## 样式&样式组件
+
+### 何时使用
+
+- 主标题的样式 `sui-title`，页面主标题，已集成在路由内
+- 无数据的展示样式 `sui-nothing`，用于“暂无数据”等
+- 红色警告按钮 `sui-btn-danger`，用于警告按钮，加强了背景色
+- 审核通过的背景色 `sui-pass-bg-color`，用于通过审核的高亮提醒
+- 审核不通过的背景色 `sui-delete-bg-color`，用于审核不通过的高亮提醒
+- sui默认的icon样式 `sui-icon-default`，可自行覆盖
+
+### 使用方法
+
+<CodeBox
+  title="样式组件"
+  demo={[{
+      component: <div>
+        <div><span className="sui-title" >主标题</span></div>
+        <div><span className="sui-nothing" >暂无数据</span></div>
+        <div><Button className="sui-btn-danger" >删除</Button></div>
+        <div style={{height:100,width:300}} className="sui-pass-bg-color"  >通过的内容</div>
+        <div style={{height:100,width:300}} className="sui-delete-bg-color"  >不通过的内容</div>
+        </div>,
+      code: `
+      //直接引用className即可
+      <div>
+        <div><span className="sui-title" >主标题</span></div>
+        <div><span className="sui-nothing" >暂无数据</span></div>
+        <div><Button className="sui-btn-danger" >删除</Button></div>
+        <div style={{height:100,width:300}} className="sui-pass-bg-color"  >通过的内容</div>
+        <div style={{height:100,width:300}} className="sui-delete-bg-color"  >不通过的内容</div>
+      </div>`
+  }]}
+  api={[]}
+/>

@@ -1,0 +1,32 @@
+@content: {
+  background: #fff;
+  flex: 1;
+  overflow: auto;
+
+  // &-allowScroll:hover {
+  //   overflow-y: overlay !important;
+  // }
+  // &-allowScroll::-webkit-scrollbar {
+  //   width: 7px;
+  //   height: 100%;
+  // }
+  // &-allowScroll::-webkit-scrollbar-thumb {
+  //   width: 5px;
+  //   background-color: #ccc;
+  //   border-radius: 3px;
+  // }
+  // &-allowScroll::-webkit-scrollbar-track {
+  //   border-radius: 10px;
+  //   background-color: rgba(255, 255, 255, 0.2); //设置背景半透明
+  // }
+};
+//普通的content样式
+.sui-page-content {
+  //用flex给宽边的content设置高度
+  @content();
+}
+//窄边距的content样式
+.sui-page-content-narrow {
+  @content();
+  padding: 64px 62px 10px 62px;
+}

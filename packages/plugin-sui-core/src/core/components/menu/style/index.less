@@ -1,0 +1,200 @@
+/*
+ * @Author: zenli 
+ * @Date: 2018-11-20 15:23:45 
+ * @Last Modified by: zhirongtang
+ * @Last Modified time: 2020-05-27 19:58:43
+ */
+
+@import './../../../themes/variables.less';
+
+@menu: ~'@{sui-prefix}-menu';
+@a-selected: @primary-color;
+@menu-width: @sui-left-wrapper-width;
+@menu-minWidth: @sui-left-wrapper-minWidth;
+
+.@{menu} {
+  width: 100%;
+  min-width: @menu-minWidth;
+  opacity: 1;
+  transition: opacity 0.4s ease-out;
+  user-select: none;
+  overflow: auto;
+
+  // &-allowScroll:hover {
+  //   overflow: auto !important;
+  // }
+  // &-allowScroll::-webkit-scrollbar {
+  //   width: 7px;
+  //   height: 100%;
+  // }
+  // &-allowScroll::-webkit-scrollbar-thumb {
+  //   width: 5px;
+  //   background-color: #ccc;
+  //   border-radius: 3px;
+  // }
+  // &-allowScroll::-webkit-scrollbar-track {
+  //   border-radius: 10px;
+  //   background-color: rgba(255, 255, 255, 0.2); //设置背景透明
+  // }
+
+  &-icon {
+    margin-right: 18px;
+    &-selected {
+      i {
+        color: @a-selected !important;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &-list {
+    margin-top: 30px;
+    // height: 100%;
+    position: relative;
+    transition: opacity 0.4s ease-out;
+
+    .@{menu}-submenu {
+      margin-top: 30px;
+      margin-left: 30px;
+      position: relative;
+
+      .submenu-name {
+        height: 26px;
+        display: flex;
+        cursor: pointer;
+        font-size: 14px;
+        &:hover span {
+          color: @a-selected;
+        }
+        & > span {
+          margin-right: 18px;
+          line-height: 26px;
+        }
+        & > div {
+          flex: 1 1;
+          overflow: hidden;
+          line-height: 26px;
+          span {
+            display: inline-block;
+            font-size: 14px;
+            opacity: 1;
+          }
+        }
+        & > a {
+          display: inherit;
+          color: #000;
+          span {
+            margin-right: 18px;
+            line-height: 26px;
+          }
+        }
+        & > .submenu-name-node-selected {
+          color: #32a982;
+          cursor: pointer;
+        }
+        &-active-collapsed {
+          opacity: 0 !important;
+        }
+      }
+
+      .submenu-list {
+        .submenu-item {
+          padding-top: 30px;
+          & > span {
+            color: #999;
+            margin-left: 33px;
+          }
+          &-node {
+            display: block;
+            font-size: 14px;
+            margin: 24px 48px 0px 48px;
+            color: #000;
+            &:hover,
+            &:active,
+            &-selected {
+              color: @a-selected;
+              cursor: pointer;
+            }
+          }
+        }
+        //左侧导航收放动画
+        &-activating {
+          transition: height 0.15s cubic-bezier(0.645, 0.045, 0.355, 1),
+            opacity 0.15s cubic-bezier(0.645, 0.045, 0.355, 1) !important;
+          overflow: hidden;
+        }
+      }
+    }
+
+    .@{menu}-rootmenu {
+      margin-left: 0;
+      .rootmenu-name {
+        font-size: 16px !important;
+      }
+    }
+  }
+
+  //导航收起的样式
+  &-collapsed {
+    width: @menu-width;
+    min-width: @menu-minWidth;
+    .@{menu}-submenu:hover {
+      .submenu-list {
+        visibility: visible;
+        overflow: auto !important;
+        // max-height: 800px;
+        position: absolute;
+        width: 197px;
+        z-index: 99;
+        left: 28px;
+        top: 0px;
+        background: #fff;
+        border-radius: 2px;
+        box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.29);
+        padding-bottom: 30px;
+        opacity: 1 !important;
+        display: block !important;
+        margin-bottom: 10px;
+        .submenu-item-node-collapsed {
+          opacity: 1 !important;
+        }
+      }
+      .submenu-list::-webkit-scrollbar {
+        width: 7px;
+        height: 100%;
+      }
+      .submenu-list::-webkit-scrollbar-thumb {
+        width: 5px;
+        background-color: #ccc;
+        border-radius: 3px;
+      }
+      .submenu-list::-webkit-scrollbar-track {
+        border-radius: 10px;
+        background-color: rgba(255, 255, 255, 0.2); //设置背景透明
+      }
+    }
+  }
+
+  .submenu-item-node {
+    font-size: 14px;
+    display: block;
+    margin-top: 30px;
+    color: #333;
+    .rootmenu-name {
+      font-size: 16px !important;
+    }
+    &:hover,
+    &:active,
+    &-selected {
+      color: @a-selected;
+      cursor: pointer;
+    }
+  }
+
+  .none {
+    // display: none;
+    visibility: hidden;
+    position: absolute;
+    top: -999em;
+  }
+}
