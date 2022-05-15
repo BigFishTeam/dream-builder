@@ -54,7 +54,7 @@ const ProjectPage: React.FC = () => {
           />
         </div>
       </Content>
-      <Footer style={{ textAlign: 'center' }}>Fishcui @2020 Gonggong</Footer>
+      <Footer style={{ textAlign: 'center' }}>BigFish Team @2020 Dream-builder</Footer>
     </Layout>
   );
 };

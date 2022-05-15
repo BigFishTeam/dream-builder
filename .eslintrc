@@ -7,13 +7,11 @@
       "modules": true
     }
   },
-  "extends": ["prettier", "prettier/react"],
-  "plugins": ["@typescript-eslint", "prettier", "import"],
+  "plugins": ["@typescript-eslint", "import"],
   "env": {
     "es6": true
   },
   "rules": {
-    "prettier/prettier": "error",
     "no-dupe-args": "error",
     "no-dupe-keys": "error",
     "no-unreachable": "warn",

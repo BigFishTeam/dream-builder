@@ -25,15 +25,29 @@ export default () => {
             marginBottom: '20px',
           }}>
           <h1>Dream Builder</h1>
-          <h2>后台搭建系统</h2>
-          <p>可视化后台搭建系统，have fun</p>
+          <br></br>
+          <h2>中后台可视化搭建系统</h2>
+          <br></br>
+          <p>基于React组件与模版快速搭建页面</p>
+          <br></br>
+          <Button
+            type="primary"
+            size="large"
+            style={{
+              marginRight: 20,
+            }}
+            onClick={() => {
+              history.push('/project');
+            }}>
+            快速开始
+          </Button>
           <Button
             type="primary"
             size="large"
             onClick={() => {
-              history.push('/login');
+              window.location.href = '';
             }}>
-            尝试一下
+            查看文档
           </Button>
         </div>
         <div id={'scene2'}>
