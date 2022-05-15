@@ -45,7 +45,7 @@ export default () => {
             type="primary"
             size="large"
             onClick={() => {
-              window.location.href = '';
+              window.open('https://github.com/BigFishTeam/dream-builder/blob/main/src/docs/start.md');
             }}>
             查看文档
           </Button>
