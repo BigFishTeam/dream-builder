@@ -113,7 +113,6 @@ yarn run deploy
 - ConfigItem： 配置生成器，分为静态数据、状态和方法、事件配置、样式等配置
 - AstParser： 解析和操作 AstNode，深度优先遍历 AST 树
 
-页面结构描述 AST 树：
 ![页面结构](./images/9.png)
 
 # 渲染引擎
