@@ -99,7 +99,7 @@
   },
   "scripts": {
     "start": "node scripts/start.js",
-    "build": "node scripts/build.js",
+    "build": "PUBLIC_URL=/dbuilder/build node scripts/build.js",
     "test": "node scripts/test.js",
     "prettier-watch": "onchange '**/*.ts **/*.tsx' -- prettier --write {{changed}}",
     "eslint": "eslint src --ext .ts,.tsx"
@@ -200,6 +200,7 @@
     "onchange": "^6.1.0",
     "prettier": "1.19.1",
     "pretty-quick": "^2.0.1",
-    "raw-loader": "^4.0.2"
+    "raw-loader": "^4.0.2",
+    "webpack-bundle-analyzer": "^4.5.0"
   }
 }
